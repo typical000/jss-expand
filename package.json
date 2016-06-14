@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/typical000/jss-shorthand"
+    "url": "git@github.com:typical000/jss-shorthand.git"
   },
   "keywords": [
     "jss",
@@ -25,7 +25,7 @@
     "build:max": "NODE_ENV=development webpack src/index.js dist/jss-shorthand.js",
     "build:min": "NODE_ENV=production webpack src/index.js dist/jss-shorthand.min.js",
     "lint": "eslint ./src",
-    "prepublish": "npm run all"
+    "prepublish": "npm run all && git push --tags"
   },
   "license": "MIT",
   "main": "./lib/index.js",
