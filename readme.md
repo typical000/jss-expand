@@ -40,30 +40,30 @@ console.log(sheet.toString())
 ```
 ### Features
 1. Writing values as array of numbers for `margin, padding, border-radius, background-position, transform, transition, animation, box-shadow, text-shadow`:
-```javascript
-padding: [20, 10],
-border-radius: ['50%', '10%'],
-box-shadow: [ '0 0 10px 0 rgba(0, 0, 0, 0.5)', 'inset 0 0 10px 0 rgba(0, 0, 0, 0.5)']
-```
+  ```javascript
+  padding: [20, 10],
+  border-radius: ['50%', '10%'],
+  box-shadow: [ '0 0 10px 0 rgba(0, 0, 0, 0.5)', 'inset 0 0 10px 0 rgba(0, 0, 0, 0.5)']
+  ```
 2. Writing values as object for `padding, margin, background, border, border-top, border-bottom, border-left, border-right, outline, list-style, transition, animation, box-shadow, text-shadow, flex`
-```javascript
-border: {
-  width: '1px',
-  style: 'solid',
-  color: '#f00'
-}
-```
-3. Writing values as array of objects
-```javascript
-transition: [{
-    property: 'opacity',
-    duration: '200ms'
-  }, {
-    property: 'width',
-    duration: '300ms'
+  ```javascript
+  border: {
+    width: '1px',
+    style: 'solid',
+    color: '#f00'
   }
-]
-```
+  ```
+3. Writing values as array of objects
+  ```javascript
+  transition: [{
+      property: 'opacity',
+      duration: '200ms'
+    }, {
+      property: 'width',
+      duration: '300ms'
+    }
+  ]
+  ```
 
 ### Order does matter
 This plugin **MUST BE** used **AFTER**:
