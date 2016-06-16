@@ -13,10 +13,11 @@ test('Space-separated array shorthands', function () {
   var ss = jss.createStyleSheet({
     a: {
       padding: [ 20, 10 ],
+      'background-size': [ 10, 'auto' ],
       'border-radius': [ 10, 15, 20, 20 ]
     }
   }, {named: false})
-  equal(ss.toString(), 'a {\n  padding: 20 10;\n  border-radius: 10 15 20 20;\n}', 'is number')
+  equal(ss.toString(), 'a {\n  padding: 20 10;\n  background-size: 10 auto;\n  border-radius: 10 15 20 20;\n}', 'is number')
 })
 
 test('Comma-separated array shorthands', function () {
