@@ -1,4 +1,4 @@
-import { propArray, propArrayInObj, propObj } from './props'
+import {propArray, propArrayInObj, propObj} from './props'
 
 /**
  * Map values by given prop
@@ -77,6 +77,7 @@ function objectToString(value, prop) {
       return tpl.replace(/\s+/g, ' ').trim()
     }
   }
+  return tpl
 }
 
 /**
@@ -88,11 +89,14 @@ function objectToString(value, prop) {
 function styleDetector(style) {
   for (const prop in style) {
     const value = style[prop]
-    if (value.constructor === Array) {
-      style[prop] = arrayToString(value, prop, propArray)
-    }
-    if (value.constructor === Object) {
-      style[prop] = objectToString(value, prop)
+    // Check if value is not a fallback
+    if(prop !== 'fallbacks') {
+      if (value.constructor === Array) {
+        style[prop] = arrayToString(value, prop, propArray)
+      }
+      if (value.constructor === Object) {
+        style[prop] = objectToString(value, prop)
+      }
     }
   }
   return style
@@ -106,7 +110,7 @@ function styleDetector(style) {
  */
 export default function jssExpand() {
   return (rule) => {
-    const { style, type } = rule
+    const {style, type} = rule
     if (!style) return
     if (type !== 'regular') return
     if (Array.isArray(style)) {
