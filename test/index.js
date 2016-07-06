@@ -2,7 +2,7 @@
 
 QUnit.module('Expand plugin', {
   setup: function () {
-    jss.use(jssShorthand.default())
+    jss.use(jssExpand.default())
   },
   teardown: function () {
     jss.plugins.registry = []
