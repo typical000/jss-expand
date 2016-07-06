@@ -1,14 +1,13 @@
 ![JSS logo](https://avatars1.githubusercontent.com/u/9503099?v=3&s=60)
 
-## JSS plugin that makes using of css shorthands in more nicer way
-This plugin
+## JSS plugin that adds possibility to write styles in more expanded way
 
 ### Usage example
 ```javascript
 import jss from 'jss'
-import jssShorthand from 'jss-shorthand'
+import jssExpand from 'jss-expand'
 
-jss.use(jssShorthand())
+jss.use(jssExpand())
 
 let sheet = jss.createStyleSheet({
   container: {
@@ -70,27 +69,15 @@ This plugin **MUST BE** used **AFTER**:
 1. [jss-camel-case](https://github.com/jsstyles/jss-camel-case)
 2. [jss-extend](https://github.com/jsstyles/jss-extend)
 
-
-### Issues
-This plugin breaks 'fallback' functionality described [here](https://github.com/jsstyles/jss/blob/master/docs/json-api.md). So your code:
-```javascript
-export default {
-  container: {
-    background: [
-      'red',
-      'linear-gradient(to right, red 0%, green 100%)'
-    ]
-  }
-}
 ```
 Will be converted to:
 ```css
-/* With jss-shorthand plugin */
+/* With jss-expand plugin */
 .container--jss-0-0 {
   background: red, linear-gradient(to right, red 0%, green 100%);
 }
 
-/* Without jss-shorthand plugin */
+/* Without jss-expand plugin */
 .container--jss-0-0 {
   background: red;
   background: linear-gradient(to right, red 0%, green 100%);

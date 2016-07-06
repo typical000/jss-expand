@@ -1,6 +1,6 @@
 'use strict'
 
-QUnit.module('Shorthand plugin', {
+QUnit.module('Expand plugin', {
   setup: function () {
     jss.use(jssShorthand.default())
   },
@@ -9,7 +9,7 @@ QUnit.module('Shorthand plugin', {
   }
 })
 
-test('Space-separated array shorthands', function () {
+test('Space-separated values as arrays', function () {
   var ss = jss.createStyleSheet({
     a: {
       padding: [ 20, 10 ],
@@ -19,7 +19,7 @@ test('Space-separated array shorthands', function () {
   equal(ss.toString(), 'a {\n  padding: 20 10;\n  border-radius: 10 15 20 20;\n}', 'is number')
 })
 
-test('Comma-separated array shorthands', function () {
+test('Comma-separated values as arrays', function () {
   var ss = jss.createStyleSheet({
     a: {
       transition: [ 'opacity 1s linear', 'transform 300ms ease' ]
@@ -28,7 +28,7 @@ test('Comma-separated array shorthands', function () {
   equal(ss.toString(), 'a {\n  transition: opacity 1s linear, transform 300ms ease;\n}', 'is number')
 })
 
-test('Simple shorthands as objects', function () {
+test('Simple expanded rules', function () {
   var ss = jss.createStyleSheet({
     a: {
       border: {
@@ -41,7 +41,7 @@ test('Simple shorthands as objects', function () {
   equal(ss.toString(), 'a {\n  border: 1px solid #f00;\n}', 'is number')
 })
 
-test('Shorthands as object (without some styles)', function () {
+test('Expanded rules as object (without some styles)', function () {
   var ss = jss.createStyleSheet({
     a: {
       background: {
@@ -55,7 +55,7 @@ test('Shorthands as object (without some styles)', function () {
   equal(ss.toString(), 'a {\n  background: #000 url(test.jpg) 0 0 no-repeat;\n}', 'is number')
 })
 
-test('Shorthands as object (default values)', function () {
+test('Expanded rules as object (default values)', function () {
   var ss = jss.createStyleSheet({
     a: {
       font: {
@@ -66,7 +66,7 @@ test('Shorthands as object (default values)', function () {
   equal(ss.toString(), 'a {\n  font: medium/normal Arial, sans-serif;\n}', 'is number')
 })
 
-test('Array of shorthand objects', function () {
+test('Array of expanded objects', function () {
   var ss = jss.createStyleSheet({
     a: {
       transition: [{

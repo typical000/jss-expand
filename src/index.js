@@ -88,7 +88,6 @@ function objectToString(value, prop) {
 function styleDetector(style) {
   for (const prop in style) {
     const value = style[prop]
-    // DANGER: This approach break JSS fallbacks logic
     if (value.constructor === Array) {
       style[prop] = arrayToString(value, prop, propArray)
     }
@@ -100,12 +99,12 @@ function styleDetector(style) {
 }
 
 /**
- * Add much nicer css shorthand using
+ * Add possibility to write styles in more expanded (unfolded) way
  *
  * @param {Rule} rule
  * @api public
  */
-export default function jssShorthand() {
+export default function jssExpand() {
   return (rule) => {
     const { style, type } = rule
     if (!style) return

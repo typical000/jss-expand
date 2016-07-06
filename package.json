@@ -1,6 +1,6 @@
 {
-  "name": "jss-shorthand",
-  "description": "JSS plugin that adds more nicer using of css shorthands",
+  "name": "jss-expand",
+  "description": "JSS plugin that adds possibility to write styles in more expanded way",
   "version": "1.0.0",
   "author": {
     "name": "Pavel Davydov",
@@ -8,12 +8,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:typical000/jss-shorthand.git"
+    "url": "git@github.com:typical000/jss-expand.git"
   },
   "keywords": [
     "jss",
     "plugin",
-    "shorthand"
+    "expand"
   ],
   "engines": {},
   "scripts": {
@@ -22,8 +22,8 @@
     "build": "npm run clean && npm run build:lib && npm run build:max && npm run build:min",
     "clean": "rimraf ./lib/*",
     "build:lib": "babel src --out-dir lib",
-    "build:max": "NODE_ENV=development webpack src/index.js dist/jss-shorthand.js",
-    "build:min": "NODE_ENV=production webpack src/index.js dist/jss-shorthand.min.js",
+    "build:max": "NODE_ENV=development webpack src/index.js dist/jss-expand.js",
+    "build:min": "NODE_ENV=production webpack src/index.js dist/jss-expand.min.js",
     "lint": "eslint ./src",
     "prepublish": "npm run all && git push --tags"
   },

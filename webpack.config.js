@@ -16,7 +16,7 @@ if (process.env.NODE_ENV === 'production') {
 
 module.exports = {
   output: {
-    library: 'jssShorthand',
+    library: 'jssExpand',
     libraryTarget: 'umd'
   },
   plugins: plugins,
