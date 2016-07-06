@@ -67,36 +67,6 @@ transition: [{
 ### Order does matter
 This plugin **MUST BE** used **AFTER** [jss-camel-case](https://github.com/jsstyles/jss-camel-case) and [jss-extend](https://github.com/jsstyles/jss-extend)
 
-<<<<<<< HEAD
-=======
-
-### Issues
-- Default units from plugin [jss-default-unit](https://github.com/jsstyles/jss-default-unit) are not applied to shorthands (because jss-default-unit adds units only to props that are **numbers**, not arrays, or objects)
-- This plugin breaks 'fallback' functionality described [here](https://github.com/jsstyles/jss/blob/master/docs/json-api.md). So your code:
-```javascript
-export default {
-  container: {
-    background: [
-      'red',
-      'linear-gradient(to right, red 0%, green 100%)'
-    ]
-  }
-}
->>>>>>> 4c050c623f278e7a7603031cdd1597598df73fde
-```
-Will be converted to:
-```css
-/* With jss-expand plugin */
-.container--jss-0-0 {
-  background: red, linear-gradient(to right, red 0%, green 100%);
-}
-
-/* Without jss-expand plugin */
-.container--jss-0-0 {
-  background: red;
-  background: linear-gradient(to right, red 0%, green 100%);
-}
-```
 
 ### Run tests
 ```bash
