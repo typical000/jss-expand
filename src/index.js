@@ -90,7 +90,7 @@ function styleDetector(style) {
   for (const prop in style) {
     const value = style[prop]
     // Check if value is not a fallback
-    if(prop !== 'fallbacks') {
+    if (prop !== 'fallbacks') {
       if (value.constructor === Array) {
         style[prop] = arrayToString(value, prop, propArray)
       }
