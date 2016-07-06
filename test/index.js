@@ -13,10 +13,11 @@ test('Space-separated values as arrays', function () {
   var ss = jss.createStyleSheet({
     a: {
       padding: [ 20, 10 ],
+      'background-size': [ 10, 'auto' ],
       'border-radius': [ 10, 15, 20, 20 ]
     }
   }, {named: false})
-  equal(ss.toString(), 'a {\n  padding: 20 10;\n  border-radius: 10 15 20 20;\n}', 'is number')
+  equal(ss.toString(), 'a {\n  padding: 20 10;\n  background-size: 10 auto;\n  border-radius: 10 15 20 20;\n}', 'is number')
 })
 
 test('Comma-separated values as arrays', function () {

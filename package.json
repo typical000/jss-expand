@@ -32,19 +32,19 @@
   "devDependencies": {
     "babel-cli": "^6.5.1",
     "babel-core": "^6.5.1",
-    "babel-eslint": "^5.0.0-beta9",
+    "babel-eslint": "^4.1.3",
     "babel-loader": "^6.2.2",
     "babel-preset-es2015": "^6.5.0",
     "babel-preset-stage-0": "^6.5.0",
     "eslint": "^1.10.3",
-    "eslint-config-airbnb": "^5.0.0",
+    "eslint-config-airbnb": "^0.1.0",
     "eslint-config-jss": "^0.2.0",
     "eslint-plugin-react": "^3.16.1",
     "jss": "^3.3.0",
     "opener": "^1.4.1",
     "qunitjs": "1.21.0",
     "rimraf": "^2.5.1",
-    "webpack": "^2.0.7-beta"
+    "webpack": "1 || ^2.1.0-beta"
   },
   "peerDependencies": {
     "jss": "^3.0.0"
