@@ -89,13 +89,23 @@ function objectToString(value, prop) {
 function styleDetector(style) {
   for (const prop in style) {
     const value = style[prop]
-    // Check if value is not a fallback
-    if (prop !== 'fallbacks') {
-      if (value.constructor === Array) {
+
+    if (value.constructor === Array) {
+      if (prop !== 'fallbacks') {
         style[prop] = arrayToString(value, prop, propArray)
       }
-      if (value.constructor === Object) {
+      else {
+        for (let index = 0; index < style[prop].length; index ++) {
+          style[prop][index] = styleDetector(style[prop][index])
+        }
+      }
+    }
+    if (value.constructor === Object) {
+      if (prop !== 'fallbacks') {
         style[prop] = objectToString(value, prop)
+      }
+      else {
+        style[prop] = styleDetector(style[prop])
       }
     }
   }

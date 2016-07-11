@@ -1,5 +1,7 @@
 'use strict'
 
+var jss = jss.create()
+
 QUnit.module('Expand plugin', {
   beforeEach: function () {
     jss.use(jssExpand.default())
@@ -82,21 +84,41 @@ QUnit.test('Array of expanded objects', function (assert) {
   assert.equal(ss.toString(), 'a {\n  transition: opacity 200ms, width 300ms;\n}', 'is number')
 })
 
-QUnit.test('Preserve fallback feature', function (assert) {
+QUnit.test('Expand with fallbacks', function (assert) {
   var ss = jss.createStyleSheet({
     'a': {
-      display: 'flex',
-      fallbacks: [
-        {display: 'block'},
-        {display: 'flex-box'}
-      ]
-    },
-    'b': {
-      background: 'linear-gradient(to right, red 0%, green 100%)',
+      background: {
+        image: 'linear-gradient(red 0%, green 100%)',
+      },
+      padding: 50,
       fallbacks: {
-        background: 'red'
+        background: {
+          color: 'url(test.png)',
+          repeat: 'no-repeat',
+          position: [0, 0]
+        },
+        padding: 20
       }
+    },
+  }, {named: false})
+  assert.equal(ss.toString(), 'a {\n  background: url(test.png) 0 0 no-repeat;\n  padding: 20;\n  background: linear-gradient(red 0%, green 100%);\n  padding: 50;\n}', 'is number')
+})
+
+QUnit.test('Expand with many same fallbacks', function (assert) {
+  var ss = jss.createStyleSheet({
+    'a': {
+      background: 'linear-gradient(red 0%, green 100%)',
+      fallbacks: [
+        { background: 'red' },
+        {
+          background: {
+            color: 'url(test.png)',
+            repeat: 'no-repeat',
+            position: [0, 0]
+          }
+        }
+      ]
     }
   }, {named: false})
-  assert.equal(ss.toString(), 'a {\n  display: block;\n  display: flex-box;\n  display: flex;\n}\nb {\n  background: red;\n  background: linear-gradient(to right, red 0%, green 100%);\n}', 'is number')
+  assert.equal(ss.toString(), 'a {\n  background: red;\n  background: url(test.png) 0 0 no-repeat;\n  background: linear-gradient(red 0%, green 100%);\n}', 'is number')
 })

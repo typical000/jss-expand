@@ -6,7 +6,6 @@
  *        "padding: [ 10, 20 ]" => "padding: 10 20;"
  * FALSE - indeicates that styles will be joined with comma. E.g:
  *         "box-shadow: [ '0 0 5px red', '0 0 2px green' ]" => "box-shadow: 0 0 5px red, 0 0 2px green"
- * WARNING - it will break 'fallback' styles in JSS :(
  */
 export const propArray = {
   'margin': true,
