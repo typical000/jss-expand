@@ -73,5 +73,13 @@ This plugin **MUST BE** used **AFTER** [jss-camel-case](https://github.com/jssty
 npm i
 npm run test
 ```
+
+
+### Run benchmark tests
+```bash
+npm i
+npm run bench
+```
+
 ### Licence
 MIT
