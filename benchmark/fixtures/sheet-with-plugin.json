@@ -39,12 +39,7 @@
     "background": "#fff",
     "opacity": 1,
     "padding": [ "10px", 0 ],
-    "font": {
-        "weight": "bold",
-        "size": "16px",
-        "line-height": "30px",
-        "family": "Helvetica, Arial, sans-serif"
-    },
+    "font": "bold 16px/30px Helvetica, Arial, sans-serif",
     "box-shadow": {
         "blur": "25px",
         "color": "rgba(0, 0, 0, 0.5)",

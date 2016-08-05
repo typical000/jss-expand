@@ -19,26 +19,17 @@ function mapValuesByProp(value, prop) {
  * @param {Object} sheme, for converting arrays in strings
  * @return {String} converted string
  */
-function arrayToString(value, prop, sheme) {
-  let convertedString
-  for (const neededProp in sheme) {
-    if (prop === neededProp) {
-      // If is object - transform values to string
-      if (value[0].constructor === Object) {
-        value = mapValuesByProp(value, prop)
+function arrayToString(value, prop, scheme) {
+  if (value[0].constructor !== Object) {
+    if (scheme.hasOwnProperty(prop)) {
+      if (value[0].constructor === Array) {
+        return arrayToString(value[0], prop, scheme)
       }
-      if (sheme[neededProp]) {
-        // If there are simple array like 'margin' or 'padding' - use whitespace
-        convertedString = value.join(' ')
-      }
-      else {
-        // Otherwise make them comma-separated
-        convertedString = value.join(', ')
-      }
-      break
+      return value.join(' ')
     }
+    return value.join(',')
   }
-  return convertedString
+  return mapValuesByProp(value, prop)
 }
 
 /**
@@ -49,35 +40,26 @@ function arrayToString(value, prop, sheme) {
  * @return {String} converted string
  */
 function objectToString(value, prop) {
-  let tpl
-
-  for (const neededProp in propObj) {
-    if (prop === neededProp) {
-      tpl = propObj[neededProp].template
-      // Evaluate properies one by one more deeply
-      for (const baseProp in propObj[neededProp].prop) {
-        let isExistant = false
-        for (const valueProp in value) {
-          if (baseProp === valueProp) {
-            isExistant = true
-            // Check if value inside is an array
-            if (value[valueProp].constructor === Array) {
-              value[valueProp] = arrayToString(value[valueProp], valueProp, propArrayInObj)
-            }
-            tpl = tpl.replace(new RegExp(valueProp, 'g'), value[valueProp])
-            break
-          }
+  const result = []
+  if (propObj.hasOwnProperty(prop)) {
+    for (const baseProp in propObj[prop]) {
+      if (typeof value[baseProp] !== 'undefined') {
+        if (value[baseProp].constructor === Array) {
+          result.push(arrayToString(value[baseProp], baseProp, propArrayInObj))
         }
-        // If there is no matches - set empty value
-        if (!isExistant) {
-          tpl = tpl.replace(new RegExp(baseProp, 'g'), propObj[neededProp].prop[baseProp])
+        else {
+          result.push(value[baseProp])
         }
       }
-      // Remove extra whitespaces from resulting string
-      return tpl.replace(/\s+/g, ' ').trim()
+      else {
+        // Add default value from props config
+        if (propObj[prop][baseProp] != null) {
+          result.push(propObj[prop][baseProp])
+        }
+      }
     }
   }
-  return tpl
+  return result.join(' ')
 }
 
 /**
@@ -89,8 +71,8 @@ function objectToString(value, prop) {
 function styleDetector(style) {
   for (const prop in style) {
     const value = style[prop]
-
-    if (value.constructor === Array) {
+    // Need to check double arrays to aboid recursion
+    if (value.constructor === Array && value[0].constructor !== Array) {
       if (prop !== 'fallbacks') {
         style[prop] = arrayToString(value, prop, propArray)
       }
@@ -99,6 +81,7 @@ function styleDetector(style) {
           style[prop][index] = styleDetector(style[prop][index])
         }
       }
+      continue
     }
     if (value.constructor === Object) {
       if (prop !== 'fallbacks') {
@@ -107,6 +90,7 @@ function styleDetector(style) {
       else {
         style[prop] = styleDetector(style[prop])
       }
+      continue
     }
   }
   return style

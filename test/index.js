@@ -16,7 +16,7 @@ QUnit.test('Space-separated values as arrays', function (assert) {
     a: {
       padding: [ 20, 10 ],
       'background-size': [ 10, 'auto' ],
-      'border-radius': [ 10, 15, 20, 20 ]
+      'border-radius': [ 10, 15, 20, 20 ],
     }
   }, {named: false})
   assert.equal(ss.toString(), 'a {\n  padding: 20 10;\n  background-size: 10 auto;\n  border-radius: 10 15 20 20;\n}', 'is number')
@@ -28,7 +28,7 @@ QUnit.test('Comma-separated values as arrays', function (assert) {
       transition: [ 'opacity 1s linear', 'transform 300ms ease' ]
     }
   }, {named: false})
-  assert.equal(ss.toString(), 'a {\n  transition: opacity 1s linear, transform 300ms ease;\n}', 'is number')
+  assert.equal(ss.toString(), 'a {\n  transition: opacity 1s linear,transform 300ms ease;\n}', 'is number')
 })
 
 QUnit.test('Simple expanded rules', function (assert) {
@@ -50,23 +50,12 @@ QUnit.test('Expanded rules as object (without some styles)', function (assert) {
       background: {
         color: '#000',
         image: 'url(test.jpg)',
-        position: [ 0, 0 ],
+        position: [[ 0, 0 ]],
         repeat: 'no-repeat'
       }
     }
   }, {named: false})
   assert.equal(ss.toString(), 'a {\n  background: #000 url(test.jpg) 0 0 no-repeat;\n}', 'is number')
-})
-
-QUnit.test('Expanded rules as object (default values)', function (assert) {
-  var ss = jss.createStyleSheet({
-    a: {
-      font: {
-        family: 'Arial, sans-serif'
-      }
-    }
-  }, {named: false})
-  assert.equal(ss.toString(), 'a {\n  font: medium/normal Arial, sans-serif;\n}', 'is number')
 })
 
 QUnit.test('Array of expanded objects', function (assert) {
@@ -84,6 +73,18 @@ QUnit.test('Array of expanded objects', function (assert) {
   assert.equal(ss.toString(), 'a {\n  transition: opacity 200ms, width 300ms;\n}', 'is number')
 })
 
+QUnit.test('Array of arrays', function (assert) {
+  var ss = jss.createStyleSheet({
+    a: {
+      transition: [
+        ['opacity', '200ms'],
+        ['width', '300ms']
+      ]
+    }
+  }, {named: false})
+  assert.equal(ss.toString(), 'a {\n  transition: opacity 200ms, width 300ms;\n}', 'is number')
+})
+
 QUnit.test('Expand with fallbacks', function (assert) {
   var ss = jss.createStyleSheet({
     'a': {
@@ -95,7 +96,7 @@ QUnit.test('Expand with fallbacks', function (assert) {
         background: {
           color: 'url(test.png)',
           repeat: 'no-repeat',
-          position: [0, 0]
+          position: [ 0, 0 ]
         },
         padding: 20
       }

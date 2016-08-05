@@ -38,35 +38,53 @@ console.log(sheet.toString())
 }
 ```
 ### Features
-- Writing values as array of numbers for `margin, padding, border-radius, background-position, transform, transition, animation, box-shadow, text-shadow`:
-```javascript
-padding: [20, 10],
-border-radius: ['50%', '10%'],
-box-shadow: [ '0 0 10px 0 rgba(0, 0, 0, 0.5)', 'inset 0 0 10px 0 rgba(0, 0, 0, 0.5)']
-```
-- Writing values as object for `padding, margin, background, border, border-top, border-bottom, border-left, border-right, outline, list-style, transition, animation, box-shadow, text-shadow, flex`
-```javascript
-border: {
-  width: '1px',
-  style: 'solid',
-  color: '#f00'
-}
-```
-- Writing values as array of objects
-```javascript
-transition: [{
-    property: 'opacity',
-    duration: '200ms'
-  }, {
-    property: 'width',
-    duration: '300ms'
+1. One syntax for arrays. This plugin simplifies writing values as array of numbers for `margin, padding, border-radius, background-position, transform, transition, animation, box-shadow, text-shadow`:
+  ```javascript
+  padding: [20, 10],
+  border-radius: ['50%', '10%'],
+  transition: [['opacity', '200ms'], ['width', '300ms']]
+  ```
+  instead of comma and space separated syntax from jss:
+  ```javascript
+  padding: [[20, 10]],
+  border-radius: [['50%', '10%']],
+  transition: [[['opacity', '200ms']], [['width', '300ms']]]
+  ```
+
+2. Writing values as object for `padding, margin, background, border, border-top, border-bottom, border-left, border-right, outline, list-style, transition, animation, box-shadow, text-shadow, flex`
+  ```javascript
+  border: {
+    width: '1px',
+    style: 'solid',
+    color: '#f00'
   }
-]
-```
+  ```
+  will be converted to
+  ```css
+  border: 1px solid #f00;
+  ```
+
+3. Writing values as array of objects
+  ```javascript
+  transition: [{
+      property: 'opacity',
+      duration: '200ms'
+    }, {
+      property: 'width',
+      duration: '300ms'
+    }
+  ]
+  ```
+  will be converted to
+  ```css
+  transition: opacity 200ms, width 300ms;
+  ```
 
 ### Order does matter
 This plugin **MUST BE** used **AFTER** [jss-camel-case](https://github.com/jsstyles/jss-camel-case) and [jss-extend](https://github.com/jsstyles/jss-extend)
 
+### Known issues
+This plugin doesn't support `font` property written in expanded way. This is because plugin must have maximum performance, and all exceptions like in `font` way of writing (joining of `font-size` and `line-height` joining with `\` symbol) is forbidden.
 
 ### Run tests
 ```bash

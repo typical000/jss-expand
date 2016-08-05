@@ -2,23 +2,14 @@
 
 /*
  * Scheme for converting properties from array to nomral style.
- * TRUE - indicates that styles will be joined with whitespace. E.g:
- *        "padding: [ 10, 20 ]" => "padding: 10 20;"
- * FALSE - indeicates that styles will be joined with comma. E.g:
- *         "box-shadow: [ '0 0 5px red', '0 0 2px green' ]" => "box-shadow: 0 0 5px red, 0 0 2px green"
+ * All properties listed below will be transformed to string with 'space' separation
  */
 export const propArray = {
   'margin': true,
   'padding': true,
   'border-radius': true,
   'background-size': true,
-  'background-position': true,
-  'background': false,
-  'transform': false,
-  'transition': false,
-  'animation': false,
-  'box-shadow': false,
-  'text-shadow': false,
+  'background-position': true
 }
 
 /**
@@ -26,7 +17,6 @@ export const propArray = {
  * e.g: "{ position: [0, 0] }" => "background-position: 0 0;"
  */
 export const propArrayInObj = {
-  'size': true, // background-size
   'position': true, // background-position
 }
 
@@ -35,148 +25,92 @@ export const propArrayInObj = {
  */
 export const propObj = {
   padding: {
-    template: 'top right bottom left',
-    prop: {
-      top: 0,
-      right: 0,
-      bottom: 0,
-      left: 0,
-    }
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0
   },
   margin: {
-    template: 'top right bottom left',
-    prop: {
-      top: 0,
-      right: 0,
-      bottom: 0,
-      left: 0,
-    }
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0
   },
   background: {
-    template: 'attachment color image position repeat',
-    prop: {
-      attachment: '',
-      color: '',
-      image: '',
-      position: '',
-      repeat: '',
-    }
+    attachment: null,
+    color: null,
+    image: null,
+    position: null,
+    repeat: null
   },
   border: {
-    template: 'width style color',
-    prop: {
-      width: '',
-      style: '',
-      color: '',
-    }
+    width: null,
+    style: null,
+    color: null
   },
   'border-top': {
-    template: 'width style color',
-    prop: {
-      width: '',
-      style: '',
-      color: '',
-    }
+    width: null,
+    style: null,
+    color: null
   },
   'border-right': {
-    template: 'width style color',
-    prop: {
-      width: '',
-      style: '',
-      color: '',
-    }
+    width: null,
+    style: null,
+    color: null
   },
   'border-bottom': {
-    template: 'width style color',
-    prop: {
-      width: '',
-      style: '',
-      color: '',
-    }
+    width: null,
+    style: null,
+    color: null
   },
   'border-left': {
-    template: 'width style color',
-    prop: {
-      width: '',
-      style: '',
-      color: '',
-    }
+    width: null,
+    style: null,
+    color: null
   },
   outline: {
-    template: 'width style color',
-    prop: {
-      width: '',
-      style: '',
-      color: '',
-    }
-  },
-  font: {
-    template: 'style variant weight size/line-height family',
-    prop: {
-      style: '',
-      variant: '',
-      weight: '',
-      size: 'medium', // See 'initial value' from https://developer.mozilla.org/en-US/docs/Web/CSS/font
-      'line-height': 'normal',
-      family: '',
-    }
+    width: null,
+    style: null,
+    color: null
   },
   'list-style': {
-    template: 'type position image',
-    prop: {
-      type: '',
-      position: '',
-      image: '',
-    }
+    type: null,
+    position: null,
+    image: null
   },
   'transition': {
-    template: 'property duration timing-function delay',
-    prop: {
-      property: '',
-      duration: '',
-      'timing-function': '',
-      delay: '',
-    }
+    property: null,
+    duration: null,
+    'timing-function': null,
+    delay: null
   },
   'animation': {
-    template: 'name duration timing-function delay iteration-count direction fill-mode play-state',
-    prop: {
-      name: '',
-      duration: '',
-      'timing-function': '',
-      delay: '',
-      'iteration-count': '',
-      direction: '',
-      'fill-mode': '',
-      'play-state': '',
-    }
+    name: null,
+    duration: null,
+    'timing-function': null,
+    delay: null,
+    'iteration-count': null,
+    direction: null,
+    'fill-mode': null,
+    'play-state': null
   },
   'box-shadow': {
-    template: 'x y blur spread color inset',
-    prop: {
-      x: 0,
-      y: 0,
-      blur: '',
-      spread: '',
-      color: '',
-      inset: '',
-    }
+    x: 0,
+    y: 0,
+    blur: null,
+    spread: null,
+    color: null,
+    inset: null
   },
   'text-shadow': {
-    template: 'x y blur color',
-    prop: {
-      x: 0,
-      y: 0,
-      blur: '',
-      color: '',
-    }
+    x: 0,
+    y: 0,
+    blur: null,
+    color: null
   },
   'flex': {
-    template: 'grow shrink basis',
-    prop: {
-      grow: '',
-      shrink: '',
-      basis: '',
-    }
+    grow: null,
+    shrink: null,
+    basis: null
   }
 }
