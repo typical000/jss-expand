@@ -1,7 +1,7 @@
 {
   "name": "jss-expand",
   "description": "JSS plugin that adds possibility to write styles in more expanded way",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "author": {
     "name": "Pavel Davydov",
     "email": "typical000@gmail.com"

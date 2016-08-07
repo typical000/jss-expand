@@ -123,3 +123,17 @@ QUnit.test('Expand with many same fallbacks', function (assert) {
   }, {named: false})
   assert.equal(ss.toString(), 'a {\n  background: red;\n  background: url(test.png) 0 0 no-repeat;\n  background: linear-gradient(red 0%, green 100%);\n}', 'is number')
 })
+
+QUnit.test('Integration with jss-camel-case', function (assert) {
+  var ss = jss.createStyleSheet({
+    a: {
+      transition: {
+        timingFunction: 'linear',
+        delay: '300ms',
+        property: 'opacity',
+        duration: '200ms'
+      }
+    }
+  }, {named: false})
+  assert.equal(ss.toString(), 'a {\n  transition: opacity 200ms linear 300ms;\n}', 'is number')
+})

@@ -82,17 +82,22 @@ export const propObj = {
     property: null,
     duration: null,
     'timing-function': null,
+    timingFunction: null, // Needed for avoiding comilation issues with jss-camel-case
     delay: null
   },
   'animation': {
     name: null,
     duration: null,
     'timing-function': null,
+    timingFunction: null, // Needed for avoiding comilation issues with jss-camel-case
     delay: null,
     'iteration-count': null,
+    iterationCount: null, // Needed for avoiding comilation issues with jss-camel-case
     direction: null,
     'fill-mode': null,
-    'play-state': null
+    fillMode: null, // Needed for avoiding comilation issues with jss-camel-case
+    'play-state': null,
+    playState: null // Needed for avoiding comilation issues with jss-camel-case
   },
   'box-shadow': {
     x: 0,
