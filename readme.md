@@ -80,6 +80,8 @@ console.log(sheet.toString())
   transition: opacity 200ms, width 300ms;
   ```
 
+More expanded documentation is available [here](https://github.com/typical000/jss-expand/blob/master/docs/index.md)
+
 ### Order does matter
 This plugin **MUST BE** used **AFTER** [jss-camel-case](https://github.com/jsstyles/jss-camel-case) and [jss-extend](https://github.com/jsstyles/jss-extend) and [jss-default-unit](https://github.com/jsstyles/jss-default-unit)
 
