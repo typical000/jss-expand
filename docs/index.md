@@ -1,18 +1,18 @@
 ## JSS-EXPAND
 
 1. [Features](#features)
-    1. ['space-separated' properties writing](#writing_spaceseparated_properties)
-    2. ['space-separated' properties inside arrays](#spaceseparated_properties_inside_arrays)
-    3. [Writing properties in expanded way](#writing_properties_in_expanded_way)
-    4. [Writing properties in expanded way inside arrays](#features-4)
-    5. [Writing expanded properties inside fallbacks](#features-5)
-    6. [jss-camel-case integration](#features-6)
+    1. ['space-separated' properties writing](#user-content-writing-space-separated-properties)
+    2. ['space-separated' properties inside arrays](#user-content-space-separated-properties-inside-arrays)
+    3. [Writing properties in expanded way](#user-content-writing-properties-in-expanded-way)
+    4. [Writing properties in expanded way inside arrays](#user-content-writing-properties-in-expanded-way-inside-arrays)
+    5. [Writing expanded properties inside fallbacks](#user-content-writing-expanded-properties-inside-fallbacks)
+    6. [jss-camel-case integration](#user-content-jss-camel-case-integration)
 
 2. [Properties](#properties)
 
 ## Features
 
-1. ##### writing space-separated properties
+1. #### writing space-separated properties
 
     Simplification in writing 'space-separated' properties. Now, in jss for defining `padding` we must write `padding: [[ 20, 30 ]]`
     Using **jss-expand** you can write properties with one bracket:
@@ -33,7 +33,7 @@
     4. `background-size`
     5. `background-position`
 
-2. ##### space-separated properties inside arrays
+2. #### space-separated properties inside arrays
 
     Simplified syntax for writing more complex constructions with arrays. In pure jss, if you want to write multi-values for e.g. `transition` you must write:
 
@@ -49,7 +49,7 @@
     }
     ````````````````````
 
-3. ##### Writing properties in expanded way
+3. #### Writing properties in expanded way
     
     You don't need to keep in mind writing order of 'partial' properties, plugin do it for you. So, you can write:
     
@@ -65,25 +65,25 @@
     border: 1px solid #f00;
     ````````````````````
     Properties that supports 'expanded' syntax:
-    1. `padding`
-    2. `margin`
-    3. `background`
-    4. `border`
-    5. `border-top`
-    6. `border-right`
-    7. `border-bottom`
-    8. `border-left`
-    9. `outline`
-    10. `list-style`
-    11. `transition`
-    12. `animation`
-    13. `box-shadow`
-    14. `text-shadow`
-    15. `flex`
+    * `padding`
+    * `margin`
+    * `background`
+    * `border`
+    * `border-top`
+    * `border-right`
+    * `border-bottom`
+    * `border-left`
+    * `outline`
+    * `list-style`
+    * `transition`
+    * `animation`
+    * `box-shadow`
+    * `text-shadow`
+    * `flex`
     
     For more information see [properties section](#properties)
 
-4. **Writing properties in expanded way inside arrays**
+4. #### Writing properties in expanded way inside arrays
 
     ````````````````````js
     transition: [{
@@ -100,7 +100,7 @@
     transition: opacity 200ms, width 300ms;
     ````````````````````
 
-5. **Writing expanded properties inside `fallbacks`**
+5. #### Writing expanded properties inside fallbacks
 
     (more about jss fallback you can find [here](https://github.com/cssinjs/jss/blob/master/docs/json-api.md) (section 'Fallbacks')):
     ````````````````````js
@@ -125,7 +125,7 @@
     }
     ````````````````````
 
-6. **jss-camel-case integration**
+6. #### jss-camel-case integration
 
     Plugin have compatibility with [jss-camel-case](https://github.com/cssinjs/jss-camel-case) plugin. So you can write camelCased partial properties inside expanded syntax:
     ````````````````````js
