@@ -172,6 +172,13 @@ padding: 10px 0 0 0;
 ````````````````````
 
 If default value is **NULL** - no default value will be written.
+For better understanding what any 'sub-property' mean - all 'sub-properties' are 'property' and 'sub-property' names joined together e.g.:
+````````````````````js
+padding: {
+  top: 0
+}
+// Is 'padding' + 'top' = 'padding-top'
+````````````````````
 
 1. #### padding
 
