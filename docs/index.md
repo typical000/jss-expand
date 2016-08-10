@@ -174,6 +174,7 @@ padding: 10px 0 0 0;
 If default value is **NULL** - no default value will be written.
 
 1. #### padding
+
     ````````````````````js
     padding: {
       top: 0,
@@ -182,7 +183,9 @@ If default value is **NULL** - no default value will be written.
       left: 0
     }
     ````````````````````
+
 1. #### margin
+
     ````````````````````js
     margin: {
       top: 0,
@@ -191,7 +194,9 @@ If default value is **NULL** - no default value will be written.
       left: 0
     }
     ````````````````````
+
 1. #### background
+
     ````````````````````js
     background: {
       attachment: null,
@@ -201,7 +206,9 @@ If default value is **NULL** - no default value will be written.
       repeat: null
     }
     ````````````````````
+
 1. #### border
+
     ````````````````````js
     border: {
       width: null,
@@ -209,7 +216,9 @@ If default value is **NULL** - no default value will be written.
       color: null
     }
     ````````````````````
+
 1. #### border-top
+
     ````````````````````js
     'border-top': {
       width: null,
@@ -217,7 +226,9 @@ If default value is **NULL** - no default value will be written.
       color: null
     }
     ````````````````````
+
 1. #### border-right
+
     ````````````````````js
     'border-right': {
       width: null,
@@ -225,7 +236,9 @@ If default value is **NULL** - no default value will be written.
       color: null
     }
     ````````````````````
+
 1. #### border-bottom
+
     ````````````````````js
     'border-bottom': {
       width: null,
@@ -233,7 +246,9 @@ If default value is **NULL** - no default value will be written.
       color: null
     }
     ````````````````````
+
 1. #### border-left
+
     ````````````````````js
     'border-left': {
       width: null,
@@ -241,7 +256,9 @@ If default value is **NULL** - no default value will be written.
       color: null
     }
     ````````````````````
+
 1. #### outline
+
     ````````````````````js
     outline: {
       width: null,
@@ -249,7 +266,9 @@ If default value is **NULL** - no default value will be written.
       color: null
     }
     ````````````````````
+
 1. #### list-style
+
     ````````````````````js
     'list-style': {
       type: null,
@@ -257,7 +276,9 @@ If default value is **NULL** - no default value will be written.
       image: null
     }
     ````````````````````
+
 1. #### transition
+
     ````````````````````js
     transition: {
       property: null,
@@ -267,7 +288,9 @@ If default value is **NULL** - no default value will be written.
       delay: null
     }
     ````````````````````
+
 1. #### animation
+
     ````````````````````js
     animation: {
       name: null,
@@ -284,7 +307,9 @@ If default value is **NULL** - no default value will be written.
       playState: null // You can write 'camelCased' property
     }
     ````````````````````
+
 1. #### box-shadow
+
     ````````````````````js
     'box-shadow': {
       x: 0, // X offset for shadow
@@ -295,7 +320,9 @@ If default value is **NULL** - no default value will be written.
       inset: null // If you want to add inset you need to write "inset: 'inset'"
     }
     ````````````````````
+
 1. #### text-shadow
+
     ````````````````````js
     'text-shadow': {
       x: 0, // X offset for shadow
@@ -304,7 +331,9 @@ If default value is **NULL** - no default value will be written.
       color: null
     }
     ````````````````````
+
 1. #### flex
+
     ````````````````````js
     'flex': {
       grow: null,
