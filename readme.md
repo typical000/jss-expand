@@ -88,6 +88,13 @@ This plugin **MUST BE** used **AFTER** [jss-camel-case](https://github.com/jssty
 ### Known issues
 This plugin doesn't support `font` property written in expanded way. This is because plugin must have maximum performance, and all exceptions like in `font` way of writing (joining of `font-size` and `line-height` joining with `\` symbol) is forbidden.
 
+
+## Issues
+
+File a bug against [cssinjs/jss prefixed with \[jss-expand\]](https://github.com/cssinjs/jss/issues/new?title=[jss-expand]%20).
+
+
+
 ### Run tests
 ```bash
 npm i
