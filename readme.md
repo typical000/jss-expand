@@ -1,8 +1,8 @@
 ![JSS logo](https://avatars1.githubusercontent.com/u/9503099?v=3&s=60)
 
-## JSS plugin that adds possibility to write styles in more expanded way
+### JSS plugin that adds possibility to write styles in more expanded way
 
-### Usage example
+## Usage example
 ```javascript
 import jss from 'jss'
 import jssExpand from 'jss-expand'
@@ -37,7 +37,7 @@ console.log(sheet.toString())
   transition: opacity 200ms, width 300ms;
 }
 ```
-### Features
+## Features
 1. One syntax for arrays. This plugin simplifies writing values as array of numbers for `margin, padding, border-radius, background-position, transform, transition, animation, box-shadow, text-shadow`:
   ```javascript
   padding: [20, 10],
@@ -82,10 +82,10 @@ console.log(sheet.toString())
 
 More expanded documentation is available [here](https://github.com/typical000/jss-expand/blob/master/docs/index.md)
 
-### Order does matter
+## Order does matter
 This plugin **MUST BE** used **AFTER** [jss-camel-case](https://github.com/jsstyles/jss-camel-case) and [jss-extend](https://github.com/jsstyles/jss-extend) and [jss-default-unit](https://github.com/jsstyles/jss-default-unit) and [jss-nested](https://github.com/jsstyles/jss-nested)
 
-### Known issues
+## Known issues
 This plugin doesn't support `font` property written in expanded way. This is because plugin must have maximum performance, and all exceptions like in `font` way of writing (joining of `font-size` and `line-height` joining with `\` symbol) is forbidden.
 
 
@@ -95,14 +95,14 @@ File a bug against [cssinjs/jss prefixed with \[jss-expand\]](https://github.com
 
 
 
-### Run tests
+## Run tests
 ```bash
 npm i
 npm run test
 ```
 
 
-### Run benchmark tests
+## Run benchmark tests
 ```bash
 npm i
 npm run bench
