@@ -1,4 +1,3 @@
 src
 bench
-tmp
-test
+coverage
