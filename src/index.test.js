@@ -68,7 +68,7 @@ describe('jss-expand', () => {
       sheet = jss.createStyleSheet({
         a: {
           border: {
-            width: '1px',
+            width: 1,
             style: 'solid',
             color: '#f00'
           }
@@ -83,13 +83,13 @@ describe('jss-expand', () => {
     it('should generate correct CSS', () => {
       expect(sheet.toString()).to.be(
         'a {\n' +
-        '  border: 1px solid #f00;\n' +
+        '  border: 1 solid #f00;\n' +
         '}'
       )
     })
   })
 
-  describe('expanded rules as object (without some styles)', () => {
+  describe('expanded rules as an object (without some styles)', () => {
     let sheet
 
     beforeEach(() => {
@@ -183,7 +183,7 @@ describe('jss-expand', () => {
     })
   })
 
-  describe('expand with many same fallbacks', () => {
+  describe('expand with multiple fallbacks for the same prop', () => {
     let sheet
 
     beforeEach(() => {
@@ -193,7 +193,8 @@ describe('jss-expand', () => {
           fallbacks: [
             {
               background: 'red'
-            }, {
+            },
+            {
               background: {
                 color: 'url(test.png)',
                 repeat: 'no-repeat',
