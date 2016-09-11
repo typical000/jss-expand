@@ -1,27 +1,25 @@
-/* eslint-disable */
-
-/*
- * Scheme for converting properties from array to nomral style.
- * All properties listed below will be transformed to string with 'space' separation
+/**
+ * A scheme for converting properties from array to regular style.
+ * All properties listed below will be transformed to a string separated by space.
  */
 export const propArray = {
-  'margin': true,
-  'padding': true,
+  margin: true,
+  padding: true,
   'border-radius': true,
   'background-size': true,
   'background-position': true
 }
 
 /**
- * Scheme for converting arrays to normal styles inside objects
- * e.g: "{ position: [0, 0] }" => "background-position: 0 0;"
+ * A scheme for converting arrays to regular styles inside of objects.
+ * For e.g.: "{position: [0, 0]}" => "background-position: 0 0;".
  */
 export const propArrayInObj = {
-  'position': true, // background-position
+  position: true // background-position
 }
 
 /**
- * Sheme for parsing and building right styles from passed objects
+ * A sheme for parsing and building correct styles from passed objects.
  */
 export const propObj = {
   padding: {
@@ -78,26 +76,26 @@ export const propObj = {
     position: null,
     image: null
   },
-  'transition': {
+  transition: {
     property: null,
     duration: null,
     'timing-function': null,
     timingFunction: null, // Needed for avoiding comilation issues with jss-camel-case
     delay: null
   },
-  'animation': {
+  animation: {
     name: null,
     duration: null,
     'timing-function': null,
-    timingFunction: null, // Needed for avoiding comilation issues with jss-camel-case
+    timingFunction: null, // Needed to avoid compilation issues with jss-camel-case
     delay: null,
     'iteration-count': null,
-    iterationCount: null, // Needed for avoiding comilation issues with jss-camel-case
+    iterationCount: null, // Needed to avoid compilation issues with jss-camel-case
     direction: null,
     'fill-mode': null,
-    fillMode: null, // Needed for avoiding comilation issues with jss-camel-case
+    fillMode: null, // Needed to avoid compilation issues with jss-camel-case
     'play-state': null,
-    playState: null // Needed for avoiding comilation issues with jss-camel-case
+    playState: null // Needed to avoid compilation issues with jss-camel-case
   },
   'box-shadow': {
     x: 0,
@@ -113,7 +111,7 @@ export const propObj = {
     blur: null,
     color: null
   },
-  'flex': {
+  flex: {
     grow: null,
     shrink: null,
     basis: null

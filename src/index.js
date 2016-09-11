@@ -1,7 +1,7 @@
 import {propArray, propArrayInObj, propObj} from './props'
 
 /**
- * Map values by given prop
+ * Map values by given prop.
  *
  * @param {Array} array of values
  * @param {String} original property
@@ -12,7 +12,7 @@ function mapValuesByProp(value, prop) {
 }
 
 /**
- * Helper function for converting array to string
+ * Convert array to string.
  *
  * @param {Array} array of values
  * @param {String} original property
@@ -33,7 +33,7 @@ function arrayToString(value, prop, scheme) {
 }
 
 /**
- * Helper function for converting object to string
+ * Convert object to string.
  *
  * @param {Object} object of values
  * @param {String} original property
@@ -52,7 +52,7 @@ function objectToString(value, prop) {
         }
       }
       else {
-        // Add default value from props config
+        // Add default value from props config.
         if (propObj[prop][baseProp] != null) {
           result.push(propObj[prop][baseProp])
         }
@@ -63,7 +63,7 @@ function objectToString(value, prop) {
 }
 
 /**
- * Detect if style need to convert or not
+ * Detect if a style needs to be converted.
  *
  * @param {Object} style
  * @return {Object} convertedStyle
@@ -97,7 +97,7 @@ function styleDetector(style) {
 }
 
 /**
- * Add possibility to write styles in more expanded (unfolded) way
+ * Adds possibility to write expanded styles.
  *
  * @param {Rule} rule
  * @api public
@@ -105,16 +105,15 @@ function styleDetector(style) {
 export default function jssExpand() {
   return (rule) => {
     const {style, type} = rule
-    if (!style) return
-    if (type !== 'regular') return
+    if (!style || type !== 'regular') return
     if (Array.isArray(style)) {
       // Pass rules one by one and reformat them
       for (let index = 0; index < style.length; index++) {
         style[index] = styleDetector(style[index])
       }
+      return
     }
-    else {
-      rule.style = styleDetector(style)
-    }
+
+    rule.style = styleDetector(style)
   }
 }
