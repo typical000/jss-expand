@@ -1,34 +1,32 @@
 ![JSS logo](https://avatars1.githubusercontent.com/u/9503099?v=3&s=60)
 
-### JSS plugin that adds possibility to write styles in more expanded way
+### JSS plugin that gives you a better syntax than CSS.
+
+Can you remember what each of those values mean `box-shadow: 2px 2px 2px 1px gold;` and in which order they have to be used? Me neither. CSS values are sometimes cryptic. This plugin makes them easy to read and to remember.
 
 ## Usage example
 ```javascript
-import jss from 'jss'
-import jssExpand from 'jss-expand'
-
-jss.use(jssExpand())
-
-let sheet = jss.createStyleSheet({
+const sheet = jss.createStyleSheet({
   container: {
-    padding: ['20px', '10px'],
+    padding: [20, 10],
     background: {
         color: '#000',
         image: 'url(image.jpg)',
         position: [0, 0],
         repeat: 'no-repeat'
     },
-    transition: [{
+    transition: [
+      {
         property: 'opacity',
         duration: '200ms'
-      }, {
+      }, 
+      {
         property: 'width',
         duration: '300ms'
       }
     ]
   }
 })
-console.log(sheet.toString())
 ```
 ```css
 .jss-0-0 {
