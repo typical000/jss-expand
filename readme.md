@@ -2,11 +2,9 @@
 
 ### JSS plugin that adds possibility to write styles in more expanded way
 
-Before using this plugin you might want to read about [how to use this
-plugin](https://github.com/cssinjs/jss/blob/master/docs/setup.md#setup-with-plugins)
-or that [order of plugins does
-matter](https://github.com/cssinjs/jss/blob/master/docs/plugins.md#order-does-matter-here-is-the-right-one)
-unless you've already did.
+Make sure you read [how to use
+plugins](https://github.com/cssinjs/jss/blob/master/docs/setup.md#setup-with-plugins)
+in general.
 
 ## Usage example
 ```javascript
