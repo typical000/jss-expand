@@ -73,7 +73,7 @@
     "jss": "^5.5.0"
   },
   "lint-staged": {
-    "*.js": [
+    "./src/*.js": [
       "eslint --fix",
       "git add"
     ]
