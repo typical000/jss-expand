@@ -3,16 +3,24 @@ import expand from './index'
 import {create} from 'jss'
 
 describe('jss-expand', () => {
-  const jss = create().use(expand())
+  let jss
+
+  beforeEach(() => {
+    jss = create().use(expand())
+  })
 
   describe('space-separated values as arrays', () => {
-    const sheet = jss.createStyleSheet({
-      a: {
-        padding: [20, 10],
-        'background-size': [10, 'auto'],
-        'border-radius': [10, 15, 20, 20],
-      }
-    }, {named: false})
+    let sheet
+
+    beforeEach(() => {
+      sheet = jss.createStyleSheet({
+        a: {
+          padding: [20, 10],
+          'background-size': [10, 'auto'],
+          'border-radius': [10, 15, 20, 20],
+        }
+      }, {named: false})
+    })
 
     it('should add rules', () => {
       expect(sheet.getRule('a')).to.not.be(undefined)
@@ -30,11 +38,15 @@ describe('jss-expand', () => {
   })
 
   describe('comma-separated values as arrays', () => {
-    const sheet = jss.createStyleSheet({
-      a: {
-        transition: ['opacity 1s linear', 'transform 300ms ease']
-      }
-    }, {named: false})
+    let sheet
+
+    beforeEach(() => {
+      sheet = jss.createStyleSheet({
+        a: {
+          transition: ['opacity 1s linear', 'transform 300ms ease']
+        }
+      }, {named: false})
+    })
 
     it('should add rules', () => {
       expect(sheet.getRule('a')).to.not.be(undefined)
@@ -50,15 +62,19 @@ describe('jss-expand', () => {
   })
 
   describe('simple expanded rules', () => {
-    const sheet = jss.createStyleSheet({
-      a: {
-        border: {
-          width: '1px',
-          style: 'solid',
-          color: '#f00'
+    let sheet
+
+    beforeEach(() => {
+      sheet = jss.createStyleSheet({
+        a: {
+          border: {
+            width: '1px',
+            style: 'solid',
+            color: '#f00'
+          }
         }
-      }
-    }, {named: false})
+      }, {named: false})
+    })
 
     it('should add rules', () => {
       expect(sheet.getRule('a')).to.not.be(undefined)
@@ -74,16 +90,20 @@ describe('jss-expand', () => {
   })
 
   describe('expanded rules as object (without some styles)', () => {
-    const sheet = jss.createStyleSheet({
-      a: {
-        background: {
-          color: '#000',
-          image: 'url(test.jpg)',
-          position: [[0, 0]],
-          repeat: 'no-repeat'
+    let sheet
+
+    beforeEach(() => {
+      sheet = jss.createStyleSheet({
+        a: {
+          background: {
+            color: '#000',
+            image: 'url(test.jpg)',
+            position: [[0, 0]],
+            repeat: 'no-repeat'
+          }
         }
-      }
-    }, {named: false})
+      }, {named: false})
+    })
 
     it('should add rules', () => {
       expect(sheet.getRule('a')).to.not.be(undefined)
@@ -99,14 +119,18 @@ describe('jss-expand', () => {
   })
 
   describe('array of arrays', () => {
-    const sheet = jss.createStyleSheet({
-      a: {
-        transition: [
-          ['opacity', '200ms'],
-          ['width', '300ms']
-        ]
-      }
-    }, {named: false})
+    let sheet
+
+    beforeEach(() => {
+      sheet = jss.createStyleSheet({
+        a: {
+          transition: [
+            ['opacity', '200ms'],
+            ['width', '300ms']
+          ]
+        }
+      }, {named: false})
+    })
 
     it('should add rules', () => {
       expect(sheet.getRule('a')).to.not.be(undefined)
@@ -122,22 +146,26 @@ describe('jss-expand', () => {
   })
 
   describe('expand with fallbacks', () => {
-    const sheet = jss.createStyleSheet({
-      a: {
-        background: {
-          image: 'linear-gradient(red 0%, green 100%)',
-        },
-        padding: 50,
-        fallbacks: {
+    let sheet
+
+    beforeEach(() => {
+      sheet = jss.createStyleSheet({
+        a: {
           background: {
-            color: 'url(test.png)',
-            repeat: 'no-repeat',
-            position: [0, 0]
+            image: 'linear-gradient(red 0%, green 100%)',
           },
-          padding: 20
+          padding: 50,
+          fallbacks: {
+            background: {
+              color: 'url(test.png)',
+              repeat: 'no-repeat',
+              position: [0, 0]
+            },
+            padding: 20
+          }
         }
-      }
-    }, {named: false})
+      }, {named: false})
+    })
 
     it('should add rules', () => {
       expect(sheet.getRule('a')).to.not.be(undefined)
@@ -156,22 +184,26 @@ describe('jss-expand', () => {
   })
 
   describe('expand with many same fallbacks', () => {
-    const sheet = jss.createStyleSheet({
-      a: {
-        background: 'linear-gradient(red 0%, green 100%)',
-        fallbacks: [
-          {
-            background: 'red'
-          }, {
-            background: {
-              color: 'url(test.png)',
-              repeat: 'no-repeat',
-              position: [0, 0]
+    let sheet
+
+    beforeEach(() => {
+      sheet = jss.createStyleSheet({
+        a: {
+          background: 'linear-gradient(red 0%, green 100%)',
+          fallbacks: [
+            {
+              background: 'red'
+            }, {
+              background: {
+                color: 'url(test.png)',
+                repeat: 'no-repeat',
+                position: [0, 0]
+              }
             }
-          }
-        ]
-      }
-    }, {named: false})
+          ]
+        }
+      }, {named: false})
+    })
 
     it('should add rules', () => {
       expect(sheet.getRule('a')).to.not.be(undefined)
@@ -189,16 +221,20 @@ describe('jss-expand', () => {
   })
 
   describe('integration with jss-camel-case', () => {
-    const sheet = jss.createStyleSheet({
-      a: {
-        transition: {
-          timingFunction: 'linear',
-          delay: '300ms',
-          property: 'opacity',
-          duration: '200ms'
+    let sheet
+
+    beforeEach(() => {
+      sheet = jss.createStyleSheet({
+        a: {
+          transition: {
+            timingFunction: 'linear',
+            delay: '300ms',
+            property: 'opacity',
+            duration: '200ms'
+          }
         }
-      }
-    }, {named: false})
+      }, {named: false})
+    })
 
     it('should add rules', () => {
       expect(sheet.getRule('a')).to.not.be(undefined)
