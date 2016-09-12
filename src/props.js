@@ -19,7 +19,7 @@ export const propArrayInObj = {
 }
 
 /**
- * A sheme for parsing and building correct styles from passed objects.
+ * A scheme for parsing and building correct styles from passed objects.
  */
 export const propObj = {
   padding: {
