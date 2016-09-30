@@ -1,3 +1,8 @@
+## 1.5.1 / 2016-09-30
+
+- refactoring
+- tests integration into jss repo
+
 ## 1.5.0 / 2016-09-06
 
 - Migrate from jQunit to mocha

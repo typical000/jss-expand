@@ -1,4 +1,3 @@
-const assign = require('lodash.assign')
 const webpackConfig = require('./webpack.config')
 
 const isBench = process.env.BENCHMARK === 'true'
@@ -7,9 +6,11 @@ module.exports = (config) => {
   config.set({
     browsers: ['Chrome', 'Firefox', 'Safari'],
     frameworks: ['mocha'],
-    files: ['tests-src.webpack.js'],
-    preprocessors: {'tests-src.webpack.js': ['webpack', 'sourcemap']},
-    webpack: assign(webpackConfig, {
+    files: ['tests.webpack.js'],
+    preprocessors: {
+      'tests.webpack.js': ['webpack', 'sourcemap']
+    },
+    webpack: Object.assign(webpackConfig, {
       devtool: 'inline-source-map'
     }),
     webpackServer: {
@@ -24,7 +25,7 @@ module.exports = (config) => {
   })
 
   if (isBench) {
-    assign(config, {
+    Object.assign(config, {
       browsers: ['Chrome'],
       frameworks: ['benchmark'],
       files: ['benchmark/**/*.js'],
