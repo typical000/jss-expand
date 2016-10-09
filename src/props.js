@@ -7,7 +7,8 @@ export const propArray = {
   padding: true,
   'border-radius': true,
   'background-size': true,
-  'background-position': true
+  'background-position': true,
+  'transform-origin': true
 }
 
 /**
