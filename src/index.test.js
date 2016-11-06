@@ -2,11 +2,15 @@ import expect from 'expect.js'
 import expand from './index'
 import {create} from 'jss'
 
+const settings = {
+  generateClassName: (str, rule) => `${rule.name}-id`
+}
+
 describe('jss-expand', () => {
   let jss
 
   beforeEach(() => {
-    jss = create().use(expand())
+    jss = create(settings).use(expand())
   })
 
   describe('space-separated values as arrays', () => {
@@ -19,7 +23,7 @@ describe('jss-expand', () => {
           'background-size': [10, 'auto'],
           'border-radius': [10, 15, 20, 20],
         }
-      }, {named: false})
+      })
     })
 
     it('should add rules', () => {
@@ -28,7 +32,7 @@ describe('jss-expand', () => {
 
     it('should generate correct CSS', () => {
       expect(sheet.toString()).to.be(
-        'a {\n' +
+        '.a-id {\n' +
         '  padding: 20 10;\n' +
         '  background-size: 10 auto;\n' +
         '  border-radius: 10 15 20 20;\n' +
@@ -45,7 +49,7 @@ describe('jss-expand', () => {
         a: {
           transition: ['opacity 1s linear', 'transform 300ms ease']
         }
-      }, {named: false})
+      })
     })
 
     it('should add rules', () => {
@@ -54,7 +58,7 @@ describe('jss-expand', () => {
 
     it('should generate correct CSS', () => {
       expect(sheet.toString()).to.be(
-        'a {\n' +
+        '.a-id {\n' +
         '  transition: opacity 1s linear,transform 300ms ease;\n' +
         '}'
       )
@@ -73,7 +77,7 @@ describe('jss-expand', () => {
             color: '#f00'
           }
         }
-      }, {named: false})
+      })
     })
 
     it('should add rules', () => {
@@ -82,7 +86,7 @@ describe('jss-expand', () => {
 
     it('should generate correct CSS', () => {
       expect(sheet.toString()).to.be(
-        'a {\n' +
+        '.a-id {\n' +
         '  border: 1 solid #f00;\n' +
         '}'
       )
@@ -102,7 +106,7 @@ describe('jss-expand', () => {
             repeat: 'no-repeat'
           }
         }
-      }, {named: false})
+      })
     })
 
     it('should add rules', () => {
@@ -111,7 +115,7 @@ describe('jss-expand', () => {
 
     it('should generate correct CSS', () => {
       expect(sheet.toString()).to.be(
-        'a {\n' +
+        '.a-id {\n' +
         '  background: #000 url(test.jpg) 0 0 no-repeat;\n' +
         '}'
       )
@@ -129,7 +133,7 @@ describe('jss-expand', () => {
             ['width', '300ms']
           ]
         }
-      }, {named: false})
+      })
     })
 
     it('should add rules', () => {
@@ -138,7 +142,7 @@ describe('jss-expand', () => {
 
     it('should generate correct CSS', () => {
       expect(sheet.toString()).to.be(
-        'a {\n' +
+        '.a-id {\n' +
         '  transition: opacity 200ms, width 300ms;\n' +
         '}'
       )
@@ -164,7 +168,7 @@ describe('jss-expand', () => {
             padding: 20
           }
         }
-      }, {named: false})
+      })
     })
 
     it('should add rules', () => {
@@ -173,7 +177,7 @@ describe('jss-expand', () => {
 
     it('should generate correct CSS', () => {
       expect(sheet.toString()).to.be(
-        'a {\n' +
+        '.a-id {\n' +
         '  background: url(test.png) 0 0 no-repeat;\n' +
         '  padding: 20;\n' +
         '  background: linear-gradient(red 0%, green 100%);\n' +
@@ -203,7 +207,7 @@ describe('jss-expand', () => {
             }
           ]
         }
-      }, {named: false})
+      })
     })
 
     it('should add rules', () => {
@@ -212,7 +216,7 @@ describe('jss-expand', () => {
 
     it('should generate correct CSS', () => {
       expect(sheet.toString()).to.be(
-        'a {\n' +
+        '.a-id {\n' +
         '  background: red;\n' +
         '  background: url(test.png) 0 0 no-repeat;\n' +
         '  background: linear-gradient(red 0%, green 100%);\n' +
@@ -234,7 +238,7 @@ describe('jss-expand', () => {
             duration: '200ms'
           }
         }
-      }, {named: false})
+      })
     })
 
     it('should add rules', () => {
@@ -243,7 +247,7 @@ describe('jss-expand', () => {
 
     it('should generate correct CSS', () => {
       expect(sheet.toString()).to.be(
-        'a {\n' +
+        '.a-id {\n' +
         '  transition: opacity 200ms linear 300ms;\n' +
         '}'
       )

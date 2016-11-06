@@ -4,7 +4,7 @@ const isBench = process.env.BENCHMARK === 'true'
 
 module.exports = (config) => {
   config.set({
-    browsers: ['Chrome', 'Firefox', 'Safari'],
+    browsers: ['Chrome'],
     frameworks: ['mocha'],
     files: ['tests.webpack.js'],
     preprocessors: {

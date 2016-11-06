@@ -1,7 +1,7 @@
 {
   "name": "jss-expand",
   "description": "JSS plugin that gives you a better syntax than CSS.",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "author": {
     "name": "Pavel Davydov",
     "email": "typical000@gmail.com"
@@ -26,8 +26,8 @@
     "build:tests:lib": "cross-env NODE_ENV=test babel src --out-dir tests",
     "build:tests:local": "cross-env NODE_ENV=test webpack src/index.test.js tmp/tests.js",
     "build:dist": "npm run build:dist:max && npm run build:dist:min",
-    "build:dist:max": "cross-env NODE_ENV=development webpack src/index.js dist/jss-compose.js",
-    "build:dist:min": "cross-env NODE_ENV=production webpack src/index.js dist/jss-compose.min.js",
+    "build:dist:max": "cross-env NODE_ENV=development webpack src/index.js dist/jss-expand.js",
+    "build:dist:min": "cross-env NODE_ENV=production webpack src/index.js dist/jss-expand.min.js",
     "clean": "rimraf '{lib,dist,tests,tmp}/*'",
     "lint": "eslint ./src",
     "lint:staged": "lint-staged",
