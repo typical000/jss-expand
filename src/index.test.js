@@ -253,4 +253,61 @@ describe('jss-expand', () => {
       )
     })
   })
+
+  describe('non-standart properties support', () => {
+    let sheet
+
+    beforeEach(() => {
+      sheet = jss.createStyleSheet({
+        a: {
+          border: {
+            width: '2px',
+            style: 'solid',
+            color: 'black',
+            radius: ['5px', '10px']
+          }
+        }
+      })
+    })
+
+    it('should add rules', () => {
+      expect(sheet.getRule('a')).to.not.be(undefined)
+    })
+
+    it('should generate correct CSS', () => {
+      expect(sheet.toString()).to.be(
+        '.a-id {\n' +
+        '  border: 2px solid black;\n' +
+        '  border-radius: 5px 10px;\n' +
+        '}'
+      )
+    })
+  })
+
+  describe('non-standart properties should not overwrite standart properties notation', () => {
+    let sheet
+
+    beforeEach(() => {
+      sheet = jss.createStyleSheet({
+        a: {
+          border: {
+            radius: ['5px', '10px']
+          },
+          'border-radius': '10px'
+        }
+      })
+    })
+
+    it('should add rules', () => {
+      expect(sheet.getRule('a')).to.not.be(undefined)
+    })
+
+    it('should generate correct CSS', () => {
+      expect(sheet.toString()).to.be(
+        '.a-id {\n' +
+        '  border-radius: 10px;\n' +
+        '}'
+      )
+    })
+  })
 })

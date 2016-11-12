@@ -1,3 +1,8 @@
+## 1.6.0 / 2016-11-12
+
+- Fix benchmark test
+- Add possibility to write custom properties
+
 ## 1.5.2 / 2016-10-11
 
 - fix build name
