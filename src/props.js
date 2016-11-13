@@ -134,6 +134,7 @@ export const customPropObj = {
     style: 'font-style',
     variant: 'font-variant',
     weight: 'font-weight',
+    stretch: 'font-stretch',
     size: 'font-size',
     family: 'font-family',
     lineHeight: 'line-height', // Needed to avoid compilation issues with jss-camel-case
