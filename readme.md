@@ -82,14 +82,10 @@ const sheet = jss.createStyleSheet({
   transition: opacity 200ms, width 300ms;
   ```
 
-More expanded documentation is available [here](https://github.com/typical000/jss-expand/blob/master/docs/index.md)
+More expanded documentation is available [here](https://github.com/cssinjs/jss-expand/blob/master/docs/index.md)
 
 ## Order does matter
 This plugin **MUST BE** used **AFTER** [jss-camel-case](https://github.com/jsstyles/jss-camel-case) and [jss-extend](https://github.com/jsstyles/jss-extend) and [jss-default-unit](https://github.com/jsstyles/jss-default-unit) and [jss-nested](https://github.com/jsstyles/jss-nested)
-
-## Known issues
-This plugin doesn't support `font` property written in expanded way. This is because plugin must have maximum performance, and all exceptions like in `font` way of writing (joining of `font-size` and `line-height` joining with `\` symbol) is forbidden.
-
 
 ## Issues
 

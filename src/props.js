@@ -126,5 +126,17 @@ export const propObj = {
 export const customPropObj = {
   border: {
     radius: 'border-radius'
+  },
+  background: {
+    size: 'background-size'
+  },
+  font: {
+    style: 'font-style',
+    variant: 'font-variant',
+    weight: 'font-weight',
+    size: 'font-size',
+    family: 'font-family',
+    lineHeight: 'line-height', // Needed to avoid compilation issues with jss-camel-case
+    'line-height': 'line-height'
   }
 }
