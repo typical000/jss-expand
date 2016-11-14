@@ -8,8 +8,7 @@ Make sure you read [how to use
 plugins](https://github.com/cssinjs/jss/blob/master/docs/setup.md#setup-with-plugins)
 in general.
 
-Full documentation [here](https://github.com/cssinjs/jss-expand/blob/master/docs/index.md)
-
+[Get full documentation.](https://github.com/cssinjs/jss-expand/blob/master/docs/index.md)
 
 ## Usage example
 ```javascript
@@ -17,10 +16,10 @@ const sheet = jss.createStyleSheet({
   container: {
     padding: [20, 10],
     background: {
-        color: 'green',
-        image: 'url(image.jpg)',
-        position: [0, 0],
-        repeat: 'no-repeat'
+      color: 'green',
+      image: 'url(image.jpg)',
+      position: [0, 0],
+      repeat: 'no-repeat'
     },
     boxShadow: {x: 10, y: 10, blur: 5, spread: 5, color: 'black'}
     transition: [
