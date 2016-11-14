@@ -8,22 +8,26 @@ Make sure you read [how to use
 plugins](https://github.com/cssinjs/jss/blob/master/docs/setup.md#setup-with-plugins)
 in general.
 
+Full documentation [here](https://github.com/cssinjs/jss-expand/blob/master/docs/index.md)
+
+
 ## Usage example
 ```javascript
 const sheet = jss.createStyleSheet({
   container: {
     padding: [20, 10],
     background: {
-        color: '#000',
+        color: 'green',
         image: 'url(image.jpg)',
         position: [0, 0],
         repeat: 'no-repeat'
     },
+    boxShadow: {x: 10, y: 10, blur: 5, spread: 5, color: 'black'}
     transition: [
       {
         property: 'opacity',
         duration: '200ms'
-      }, 
+      },
       {
         property: 'width',
         duration: '300ms'
@@ -35,54 +39,54 @@ const sheet = jss.createStyleSheet({
 ```css
 .jss-0-0 {
   padding: 20px 10px;
-  background: #000 url(image.jpg) 0 0 no-repeat;
+  background: green url(image.jpg) 0 0 no-repeat;
+  box-shadow: 10px 10px 5px 5px black;
   transition: opacity 200ms, width 300ms;
 }
 ```
 ## Features
-1. One syntax for arrays. This plugin simplifies writing values as array of numbers for `margin, padding, border-radius, background-position, transform, transition, animation, box-shadow, text-shadow`:
+
+1. Array notation for properties like `margin`, `padding` and others.
+
   ```javascript
   padding: [20, 10],
   border-radius: ['50%', '10%'],
   transition: [['opacity', '200ms'], ['width', '300ms']]
   ```
-  instead of comma and space separated syntax from jss:
-  ```javascript
-  padding: [[20, 10]],
-  border-radius: [['50%', '10%']],
-  transition: [[['opacity', '200ms']], [['width', '300ms']]]
-  ```
 
-2. Writing values as object for `padding, margin, background, border, border-top, border-bottom, border-left, border-right, outline, list-style, transition, animation, box-shadow, text-shadow, flex`
+2. Expanded object notation for all properties.
+
   ```javascript
   border: {
     width: '1px',
     style: 'solid',
-    color: '#f00'
+    color: 'red'
   }
   ```
+
   will be converted to
+
   ```css
-  border: 1px solid #f00;
+  border: 1px solid red;
   ```
 
-3. Writing values as array of objects
+3. Expanded arrays for multi value properties.
+
   ```javascript
   transition: [{
-      property: 'opacity',
-      duration: '200ms'
-    }, {
-      property: 'width',
-      duration: '300ms'
-    }
-  ]
+    property: 'opacity',
+    duration: '200ms'
+  }, {
+    property: 'width',
+    duration: '300ms'
+  }]
   ```
+
   will be converted to
+
   ```css
   transition: opacity 200ms, width 300ms;
   ```
-
-More expanded documentation is available [here](https://github.com/cssinjs/jss-expand/blob/master/docs/index.md)
 
 ## Order does matter
 This plugin **MUST BE** used **AFTER** [jss-camel-case](https://github.com/jsstyles/jss-camel-case) and [jss-extend](https://github.com/jsstyles/jss-extend) and [jss-default-unit](https://github.com/jsstyles/jss-default-unit) and [jss-nested](https://github.com/jsstyles/jss-nested)
@@ -90,7 +94,6 @@ This plugin **MUST BE** used **AFTER** [jss-camel-case](https://github.com/jssty
 ## Issues
 
 File a bug against [cssinjs/jss prefixed with \[jss-expand\]](https://github.com/cssinjs/jss/issues/new?title=[jss-expand]%20).
-
 
 
 ## Run tests
