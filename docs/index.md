@@ -1,8 +1,6 @@
-## Plugin __jss-expand__ for JSS
-
 ## Features.
 
-1. ### Expanded properties.
+### Expanded properties.
 
   A much more readable syntax and less repeatitions compared to CSS.
 
@@ -19,31 +17,14 @@
   border: 1px solid black;
   ```
 
-  Supported properties are:
-  - `padding`
-  - `margin`
-  - `background`
-  - `border`
-  - `borderTop`
-  - `borderRight`
-  - `borderBottom`
-  - `borderLeft`
-  - `outline`
-  - `listStyle`
-  - `transition`
-  - `animation`
-  - `boxShadow`
-  - `textShadow`
-  - `flex`
-
-  See [properties section](#properties) for more details.
+  See [properties section](#supported-properties) for more details.
 
 
-1. ### Using arrays for space separated properties.
+### Using arrays for space separated properties.
 
 
   ```js
-  padding: [5, 10, 5]
+  padding: [5, 10, 5],
   margin: [10, 5]
   ```
 
@@ -53,14 +34,14 @@
   padding: 5px 10px 5px;
   margin: 10px 5px
   ```
-  Properties, that can be written this way:
+  Supported properties:
   - `margin`
   - `padding`
   - `borderRadius`
   - `backgroundSize`
   - `backgroundPosition`
 
-1. ### Using arrays for multi value properties.
+### Using arrays for multi value properties.
 
   ```js
   transition: ['opacity 200ms', 'width 300ms']
@@ -87,7 +68,7 @@
   transition: opacity 200ms, width 300ms;
   ```
 
-1. ### Use objects inside of arrays.
+### Use objects inside of arrays.
 
   ```js
   transition: [{
@@ -105,9 +86,9 @@
   transition: opacity 200ms, width 300ms;
   ```
 
-1. ### Fallbacks are supported.
+### Fallbacks are supported.
 
-  JSS has a [fallbacks api](https://github.com/cssinjs/jss/blob/master/docs/json-api.md#fallbacks) which is supported by jss-expand.
+  JSS has a [fallbacks api](https://github.com/cssinjs/jss/blob/master/docs/json-api.md#fallbacks) which is also supported.
 
   ```js
   button: {
@@ -135,12 +116,12 @@
 
 ## Supported properties.
 
-A list of all properties supported in expanded syntax and their defaults.
+A list of all properties supported in expanded syntax and their corresponding defaults.
 
 
 ```js
 padding: {
-  top: 10 // Props right, bottom, left will get the defaults, same like `padding: 10px`
+  top: 10 // Props right, bottom, left will get the defaults, similar to `padding: 10px`
 }
 ```
 
@@ -235,7 +216,7 @@ animation: {
   duration: null,
   timingFunction: null,
   delay: null,
-  iterationCount: null, 
+  iterationCount: null,
   direction: null,
   fillMode: null,
   playState: null
