@@ -118,3 +118,26 @@ export const propObj = {
     basis: null
   }
 }
+
+/**
+ * A scheme for converting non-standart properties inside object.
+ * For e.g.: include 'border-radius' property inside 'border' object.
+ */
+export const customPropObj = {
+  border: {
+    radius: 'border-radius'
+  },
+  background: {
+    size: 'background-size'
+  },
+  font: {
+    style: 'font-style',
+    variant: 'font-variant',
+    weight: 'font-weight',
+    stretch: 'font-stretch',
+    size: 'font-size',
+    family: 'font-family',
+    lineHeight: 'line-height', // Needed to avoid compilation issues with jss-camel-case
+    'line-height': 'line-height'
+  }
+}
