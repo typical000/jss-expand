@@ -87,9 +87,6 @@ const sheet = jss.createStyleSheet({
   transition: opacity 200ms, width 300ms;
   ```
 
-## Order does matter
-This plugin **MUST BE** used **AFTER** [jss-camel-case](https://github.com/jsstyles/jss-camel-case) and [jss-extend](https://github.com/jsstyles/jss-extend) and [jss-default-unit](https://github.com/jsstyles/jss-default-unit) and [jss-nested](https://github.com/jsstyles/jss-nested)
-
 ## Issues
 
 File a bug against [cssinjs/jss prefixed with \[jss-expand\]](https://github.com/cssinjs/jss/issues/new?title=[jss-expand]%20).
