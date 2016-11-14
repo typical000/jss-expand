@@ -36,7 +36,7 @@ const sheet = jss.createStyleSheet({
 })
 ```
 ```css
-.jss-0-0 {
+.container-3kjh2 {
   padding: 20px 10px;
   background: green url(image.jpg) 0 0 no-repeat;
   box-shadow: 10px 10px 5px 5px black;
@@ -49,7 +49,7 @@ const sheet = jss.createStyleSheet({
 
   ```javascript
   padding: [20, 10],
-  border-radius: ['50%', '10%'],
+  borderRadius: ['50%', '10%'],
   transition: [['opacity', '200ms'], ['width', '300ms']]
   ```
 
