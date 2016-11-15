@@ -121,7 +121,7 @@ A list of all properties supported in expanded syntax and their corresponding de
 
 ```js
 padding: {
-  top: 10 // Props right, bottom, left will get the defaults, similar to `padding: 10px`
+  top: 10 // Props right, bottom, left will get 0 as defaults, as opposite to `padding: 10px`.
 }
 ```
 
