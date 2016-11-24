@@ -41,13 +41,13 @@ describe('jss-expand', () => {
     })
   })
 
-  describe('comma-separated values as arrays', () => {
+  describe('comma-separated values as arrays (using double arrays)', () => {
     let sheet
 
     beforeEach(() => {
       sheet = jss.createStyleSheet({
         a: {
-          transition: ['opacity 1s linear', 'transform 300ms ease']
+          transition: [['opacity', 1, 'linear'], ['transform', 300, 'ease']]
         }
       })
     })
@@ -59,7 +59,7 @@ describe('jss-expand', () => {
     it('should generate correct CSS', () => {
       expect(sheet.toString()).to.be(
         '.a-id {\n' +
-        '  transition: opacity 1s linear,transform 300ms ease;\n' +
+        '  transition: opacity 1 linear, transform 300 ease;\n' +
         '}'
       )
     })

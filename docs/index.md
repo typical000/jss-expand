@@ -35,25 +35,23 @@
   margin: 10px 5px
   ```
   Supported properties:
-  - `margin`
-  - `padding`
-  - `borderRadius`
   - `backgroundSize`
   - `backgroundPosition`
+  - `border`
+  - `borderBottom`
+  - `borderLeft`
+  - `borderTop`
+  - `borderRight`
+  - `boxShadow`
+  - `flex`
+  - `margin`
+  - `padding`
+  - `outline`
+  - `transformOrigin`
+  - `transform`
+  - `transition`
 
 ### Using arrays for multi value properties.
-
-  ```js
-  transition: ['opacity 200ms', 'width 300ms']
-  ```
-
-  will output
-
-  ```css
-  transition: opacity 200ms, width 300ms;
-  ```
-
-  For multi value properties with values separated by space, you can also use double arrays.
 
   ```js
   transition: [
