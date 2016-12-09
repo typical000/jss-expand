@@ -1,4 +1,4 @@
-## Features.
+# Features
 
 ### Expanded properties.
 
@@ -35,25 +35,23 @@
   margin: 10px 5px
   ```
   Supported properties:
-  - `margin`
-  - `padding`
-  - `borderRadius`
   - `backgroundSize`
   - `backgroundPosition`
+  - `border`
+  - `borderBottom`
+  - `borderLeft`
+  - `borderTop`
+  - `borderRight`
+  - `boxShadow`
+  - `flex`
+  - `margin`
+  - `padding`
+  - `outline`
+  - `transformOrigin`
+  - `transform`
+  - `transition`
 
 ### Using arrays for multi value properties.
-
-  ```js
-  transition: ['opacity 200ms', 'width 300ms']
-  ```
-
-  will output
-
-  ```css
-  transition: opacity 200ms, width 300ms;
-  ```
-
-  For multi value properties with values separated by space, you can also use double arrays.
 
   ```js
   transition: [
@@ -121,7 +119,7 @@ A list of all properties supported in expanded syntax and their corresponding de
 
 ```js
 padding: {
-  top: 10 // Props right, bottom, left will get the defaults, similar to `padding: 10px`
+  top: 10 // Props right, bottom, left will get 0 as defaults, as opposite to `padding: 10px`.
 }
 ```
 

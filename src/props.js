@@ -3,12 +3,22 @@
  * All properties listed below will be transformed to a string separated by space.
  */
 export const propArray = {
-  margin: true,
-  padding: true,
-  'border-radius': true,
   'background-size': true,
   'background-position': true,
-  'transform-origin': true
+  border: true,
+  'border-bottom': true,
+  'border-left': true,
+  'border-top': true,
+  'border-right': true,
+  'border-radius': true,
+  'box-shadow': true,
+  flex: true,
+  margin: true,
+  padding: true,
+  outline: true,
+  'transform-origin': true,
+  transform: true,
+  transition: true
 }
 
 /**
