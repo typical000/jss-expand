@@ -3,12 +3,22 @@
  * All properties listed below will be transformed to a string separated by space.
  */
 export const propArray = {
-  margin: true,
-  padding: true,
-  'border-radius': true,
   'background-size': true,
   'background-position': true,
-  'transform-origin': true
+  border: true,
+  'border-bottom': true,
+  'border-left': true,
+  'border-top': true,
+  'border-right': true,
+  'border-radius': true,
+  'box-shadow': true,
+  flex: true,
+  margin: true,
+  padding: true,
+  outline: true,
+  'transform-origin': true,
+  transform: true,
+  transition: true
 }
 
 /**
@@ -116,5 +126,28 @@ export const propObj = {
     grow: null,
     shrink: null,
     basis: null
+  }
+}
+
+/**
+ * A scheme for converting non-standart properties inside object.
+ * For e.g.: include 'border-radius' property inside 'border' object.
+ */
+export const customPropObj = {
+  border: {
+    radius: 'border-radius'
+  },
+  background: {
+    size: 'background-size'
+  },
+  font: {
+    style: 'font-style',
+    variant: 'font-variant',
+    weight: 'font-weight',
+    stretch: 'font-stretch',
+    size: 'font-size',
+    family: 'font-family',
+    lineHeight: 'line-height', // Needed to avoid compilation issues with jss-camel-case
+    'line-height': 'line-height'
   }
 }

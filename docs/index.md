@@ -1,350 +1,256 @@
-## JSS-EXPAND
+# Features
 
-1. [Features](#features)
-    1. ['space-separated' properties writing](#user-content-writing-space-separated-properties)
-    2. ['space-separated' properties inside arrays](#user-content-space-separated-properties-inside-arrays)
-    3. [Writing properties in expanded way](#user-content-writing-properties-in-expanded-way)
-    4. [Writing properties in expanded way inside arrays](#user-content-writing-properties-in-expanded-way-inside-arrays)
-    5. [Writing expanded properties inside fallbacks](#user-content-writing-expanded-properties-inside-fallbacks)
-    6. [jss-camel-case integration](#user-content-jss-camel-case-integration)
+### Expanded properties.
 
-2. [Properties](#properties)
-    1. [padding](#padding)
-    2. [margin](#margin)
-    3. [background](#background)
-    4. [border](#border)
-    5. [border-top](#border-top)
-    6. [border-right](#border-right)
-    7. [border-bottom](#border-bottom)
-    8. [border-left](#border-left)
-    9. [outline](#outline)
-    10. [list-style](#list-style)
-    11. [transition](#transition)
-    12. [animation](#animation)
-    13. [box-shadow](#box-shadow)
-    14. [text-shadow](#text-shadow)
-    15. [flex](#flex)
+  A much more readable syntax and less repeatitions compared to CSS.
 
-## Features
+  ```js
+  border: {
+    color: 'black',
+    width: 1,
+    style: 'solid'
+  }
+  ```
+  will output:
 
-1. #### writing space-separated properties
+  ```css
+  border: 1px solid black;
+  ```
 
-    Simplification in writing 'space-separated' properties. Now, in jss for defining `padding` we must write `padding: [[ 20, 30 ]]`
-    Using **jss-expand** you can write properties with one bracket:
+  See [properties section](#supported-properties) for more details.
 
-    ````````````````````js
-    foo: {
-      padding: [ 5, 10, 5 ]
-    }
-    ````````````````````
-    and the output will be
-    ````````````````````css
-    foo { padding: 5 10 5; }
-    ````````````````````
-    Properties, that can be written with short syntax:
-    * `margin`
-    * `padding`
-    * `border-radius`
-    * `background-size`
-    * `background-position`
 
-2. #### space-separated properties inside arrays
+### Using arrays for space separated properties.
 
-    Simplified syntax for writing more complex constructions with arrays. In pure jss, if you want to write multi-values for e.g. `transition` you must write:
 
-    ````````````````````js
-    foo: {
-      transition: [[['opacity', '200ms']], [['width', '300ms']]]
-    }
-    ````````````````````
-    With **jss-expand**, syntax is simplified and you can write:
-    ````````````````````js
-    foo: {
-      transition: [['opacity', '200ms'], ['width', '300ms']]
-    }
-    ````````````````````
+  ```js
+  padding: [5, 10, 5],
+  margin: [10, 5]
+  ```
 
-3. #### Writing properties in expanded way
-    
-    You don't need to keep in mind writing order of 'partial' properties, plugin do it for you. So, you can write:
-    
-    ````````````````````js
-    border: {
-      color: '#f00', // You can write properties in any order
-      width: '1px',
-      style: 'solid'
-    }
-    ````````````````````
-    and CSS output will be:
-    ````````````````````css
-    border: 1px solid #f00;
-    ````````````````````
-    Properties that supports 'expanded' syntax:
-    * `padding`
-    * `margin`
-    * `background`
-    * `border`
-    * `border-top`
-    * `border-right`
-    * `border-bottom`
-    * `border-left`
-    * `outline`
-    * `list-style`
-    * `transition`
-    * `animation`
-    * `box-shadow`
-    * `text-shadow`
-    * `flex`
-    
-    For more information see [properties section](#properties)
+  will output
 
-4. #### Writing properties in expanded way inside arrays
+  ```css
+  padding: 5px 10px 5px;
+  margin: 10px 5px
+  ```
+  Supported properties:
+  - `backgroundSize`
+  - `backgroundPosition`
+  - `border`
+  - `borderBottom`
+  - `borderLeft`
+  - `borderTop`
+  - `borderRight`
+  - `boxShadow`
+  - `flex`
+  - `margin`
+  - `padding`
+  - `outline`
+  - `transformOrigin`
+  - `transform`
+  - `transition`
 
-    ````````````````````js
-    transition: [{
-        property: 'opacity',
-        duration: '200ms'
-      }, {
-        property: 'width',
-        duration: '300ms'
-      }
-    ]
-    ````````````````````
-    and CSS output will be:
-    ````````````````````css
-    transition: opacity 200ms, width 300ms;
-    ````````````````````
+### Using arrays for multi value properties.
 
-5. #### Writing expanded properties inside fallbacks
+  ```js
+  transition: [
+    ['opacity', '200ms'],
+    ['width', '300ms']
+  ]
+  ```
 
-    (more about jss fallback you can find [here](https://github.com/cssinjs/jss/blob/master/docs/json-api.md) (section 'Fallbacks')):
-    ````````````````````js
-    foo: {
-      background: {
-        image: 'linear-gradient(red, green)'
-      },
-      fallbacks: {
-        background: {
-          color: 'red',
-          repeat: 'no-repeat',
-          position: [ 0 , 0 ]
-        }
-      }
-    }
-    ````````````````````
-    and CSS output will be:
-    ````````````````````css
-    foo {
-      background: red no-repeat 0 0;
-      background: linear-gradient(red, green);
-    }
-    ````````````````````
+  will output
 
-6. #### jss-camel-case integration
+  ```css
+  transition: opacity 200ms, width 300ms;
+  ```
 
-    Plugin have compatibility with [jss-camel-case](https://github.com/cssinjs/jss-camel-case) plugin. So you can write camelCased partial properties inside expanded syntax:
-    ````````````````````js
-    transition: {
-      timingFunction: 'linear', // Camel cased property
-      delay: '300ms',
+### Use objects inside of arrays.
+
+  ```js
+  transition: [{
       property: 'opacity',
       duration: '200ms'
-    }
-    ````````````````````
-    and CSS output will be:
-    ````````````````````css
-    transition: opacity 200ms linear 300ms;
-    ````````````````````
+    }, {
+      property: 'width',
+      duration: '300ms'
+  }]
 
-### Properties
+  ```
+  will output:
 
-Here are listed all CSS properties, that can be written in expanded way with all 'sub-properties'.
-Values of those 'sub-properties' are **default values**. So, if you don't set them - this value will be added in output. So if you write:
+  ```css
+  transition: opacity 200ms, width 300ms;
+  ```
 
-````````````````````js
-padding: {
-  top: '10px' // Other default values are 0
-}
-````````````````````
-The output will be:
-````````````````````css
-padding: 10px 0 0 0;
-````````````````````
+### Fallbacks are supported.
 
-If default value is **NULL** - no default value will be written.
-For better understanding what any 'sub-property' mean - all 'sub-properties' are 'property' and 'sub-property' names joined together e.g.:
-````````````````````js
-padding: {
-  top: 0
-}
-// Is 'padding' + 'top' = 'padding-top'
-````````````````````
+  JSS has a [fallbacks api](https://github.com/cssinjs/jss/blob/master/docs/json-api.md#fallbacks) which is also supported.
 
-1. #### padding
-
-    ````````````````````js
-    padding: {
-      top: 0,
-      right: 0,
-      bottom: 0,
-      left: 0
-    }
-    ````````````````````
-
-1. #### margin
-
-    ````````````````````js
-    margin: {
-      top: 0,
-      right: 0,
-      bottom: 0,
-      left: 0
-    }
-    ````````````````````
-
-1. #### background
-
-    ````````````````````js
+  ```js
+  button: {
     background: {
-      attachment: null,
-      color: null,
-      image: null,
-      position: null, // Can be written without double arrays, like [0, 0]
-      repeat: null
+      image: 'linear-gradient(red, green)'
+    },
+    fallbacks: {
+      background: {
+        color: 'red',
+        repeat: 'no-repeat',
+        position: [0 , 0]
+      }
     }
-    ````````````````````
+  }
+  ```
 
-1. #### border
+  will output:
 
-    ````````````````````js
-    border: {
-      width: null,
-      style: null,
-      color: null
-    }
-    ````````````````````
+  ```css
+  foo {
+    background: red no-repeat 0 0;
+    background: linear-gradient(red, green);
+  }
+  ```
 
-1. #### border-top
+## Supported properties.
 
-    ````````````````````js
-    'border-top': {
-      width: null,
-      style: null,
-      color: null
-    }
-    ````````````````````
+A list of all properties supported in expanded syntax and their corresponding defaults.
 
-1. #### border-right
 
-    ````````````````````js
-    'border-right': {
-      width: null,
-      style: null,
-      color: null
-    }
-    ````````````````````
+```js
+padding: {
+  top: 10 // Props right, bottom, left will get 0 as defaults, as opposite to `padding: 10px`.
+}
+```
 
-1. #### border-bottom
+Will output:
 
-    ````````````````````js
-    'border-bottom': {
-      width: null,
-      style: null,
-      color: null
-    }
-    ````````````````````
+```css
+padding: 10px 0 0 0;
+```
 
-1. #### border-left
+### padding
 
-    ````````````````````js
-    'border-left': {
-      width: null,
-      style: null,
-      color: null
-    }
-    ````````````````````
+```js
+padding: {
+  top: 0,
+  right: 0,
+  bottom: 0,
+  left: 0
+}
+```
 
-1. #### outline
+### margin
 
-    ````````````````````js
-    outline: {
-      width: null,
-      style: null,
-      color: null
-    }
-    ````````````````````
+```js
+margin: {
+  top: 0,
+  right: 0,
+  bottom: 0,
+  left: 0
+}
+```
 
-1. #### list-style
+### background
 
-    ````````````````````js
-    'list-style': {
-      type: null,
-      position: null,
-      image: null
-    }
-    ````````````````````
+```js
+background: {
+  attachment: null,
+  color: null,
+  image: null,
+  position: null, // Can be written using array e.g. `[0, 0]`
+  repeat: null
+}
+```
 
-1. #### transition
+### border
 
-    ````````````````````js
-    transition: {
-      property: null,
-      duration: null,
-      'timing-function': null,
-      timingFunction: null, // You can write 'camelCased' property
-      delay: null
-    }
-    ````````````````````
+Same goes for `borderTop`, `borderRight`, `borderBottom`, `borderLeft`.
 
-1. #### animation
+```js
+border: {
+  width: null,
+  style: null,
+  color: null
+}
+```
 
-    ````````````````````js
-    animation: {
-      name: null,
-      duration: null,
-      'timing-function': null,
-      timingFunction: null, // You can write 'camelCased' property
-      delay: null,
-      'iteration-count': null,
-      iterationCount: null, // You can write 'camelCased' property
-      direction: null,
-      'fill-mode': null,
-      fillMode: null, // You can write 'camelCased' property
-      'play-state': null,
-      playState: null // You can write 'camelCased' property
-    }
-    ````````````````````
+### outline
 
-1. #### box-shadow
+```js
+outline: {
+  width: null,
+  style: null,
+  color: null
+}
+```
 
-    ````````````````````js
-    'box-shadow': {
-      x: 0, // X offset for shadow
-      y: 0, // Y offset for shadow
-      blur: null,
-      spread: null,
-      color: null,
-      inset: null // If you want to add inset you need to write "inset: 'inset'"
-    }
-    ````````````````````
+### listStyle
 
-1. #### text-shadow
+```js
+listStyle: {
+  type: null,
+  position: null,
+  image: null
+}
+```
 
-    ````````````````````js
-    'text-shadow': {
-      x: 0, // X offset for shadow
-      y: 0, // Y offset for shadow
-      blur: null,
-      color: null
-    }
-    ````````````````````
+### transition
 
-1. #### flex
+```js
+transition: {
+  property: null,
+  duration: null,
+  timingFunction: null,
+  delay: null
+}
+```
 
-    ````````````````````js
-    'flex': {
-      grow: null,
-      shrink: null,
-      basis: null
-    }
-    ````````````````````
+### animation
+
+```js
+animation: {
+  name: null,
+  duration: null,
+  timingFunction: null,
+  delay: null,
+  iterationCount: null,
+  direction: null,
+  fillMode: null,
+  playState: null
+}
+```
+
+### boxShadow
+
+```js
+boxShadow: {
+  x: 0,
+  y: 0,
+  blur: null,
+  spread: null,
+  color: null,
+  inset: null // If you want to add inset you need to write "inset: 'inset'"
+}
+```
+
+### textShadow
+
+```js
+textShadow: {
+  x: 0,
+  y: 0,
+  blur: null,
+  color: null
+}
+```
+
+### flex
+
+```js
+flex: {
+  grow: null,
+  shrink: null,
+  basis: null
+}
+```

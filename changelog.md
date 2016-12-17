@@ -1,3 +1,17 @@
+## 2.0.1 / 2016-12-09
+
+- update to jss 6.0
+- docs
+
+## 1.6.1 / 2016-11-24
+
+- Add more supported space separated properties
+
+## 1.6.0 / 2016-11-12
+
+- Fix benchmark test
+- Add possibility to write custom properties
+
 ## 1.5.2 / 2016-10-11
 
 - fix build name
