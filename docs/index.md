@@ -183,6 +183,7 @@ background: {
 ### border
 
 Same goes for `borderTop`, `borderRight`, `borderBottom`, `borderLeft`.
+
 Unlike pure CSS, `border-radius` property can be written inside common `border` property.
 
 ```js
