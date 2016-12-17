@@ -116,7 +116,8 @@ describe('jss-expand', () => {
     it('should generate correct CSS', () => {
       expect(sheet.toString()).to.be(
         '.a-id {\n' +
-        '  background: #000 url(test.jpg) 0 0 no-repeat;\n' +
+        '  background: #000 0 0 no-repeat;\n' +
+        '  background-image: url(test.jpg);\n' +
         '}'
       )
     })
@@ -156,14 +157,12 @@ describe('jss-expand', () => {
       sheet = jss.createStyleSheet({
         a: {
           background: {
-            image: 'linear-gradient(red 0%, green 100%)',
+            color: 'rgba(255, 255, 255, 0.8)',
           },
           padding: 50,
           fallbacks: {
             background: {
-              color: 'url(test.png)',
-              repeat: 'no-repeat',
-              position: [0, 0]
+              color: 'white'
             },
             padding: 20
           }
@@ -178,9 +177,9 @@ describe('jss-expand', () => {
     it('should generate correct CSS', () => {
       expect(sheet.toString()).to.be(
         '.a-id {\n' +
-        '  background: url(test.png) 0 0 no-repeat;\n' +
+        '  background: white;\n' +
         '  padding: 20;\n' +
-        '  background: linear-gradient(red 0%, green 100%);\n' +
+        '  background: rgba(255, 255, 255, 0.8);\n' +
         '  padding: 50;\n' +
         '}'
       )
