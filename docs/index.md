@@ -151,7 +151,23 @@ margin: {
 }
 ```
 
+### font
+
+```js
+font: {
+  style: null,
+  variant: null,
+  weight: null,
+  stretch: null,
+  size: null,
+  family: null,
+  lineHeight: null
+}
+```
+
 ### background
+
+Unlike pure CSS, `background-size` property can be written inside common `background` property.
 
 ```js
 background: {
@@ -159,13 +175,15 @@ background: {
   color: null,
   image: null,
   position: null, // Can be written using array e.g. `[0, 0]`
-  repeat: null
+  repeat: null,
+  size: null, // Can be written using array e.g. `['center', 'center']`
 }
 ```
 
 ### border
 
 Same goes for `borderTop`, `borderRight`, `borderBottom`, `borderLeft`.
+Unlike pure CSS, `border-radius` property can be written inside common `border` property.
 
 ```js
 border: {
