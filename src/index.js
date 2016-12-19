@@ -34,9 +34,10 @@ function arrayToString(value, prop, scheme, rule) {
  * @param {Object} object of values
  * @param {String} original property
  * @param {Object} original rule
+ * @param {Boolean} is fallback prop
  * @return {String} converted string
  */
-function objectToString(value, prop, rule) {
+function objectToString(value, prop, rule, isFallback) {
   if (!(propObj[prop] || customPropObj[prop])) return ''
 
   const result = []
@@ -46,10 +47,17 @@ function objectToString(value, prop, rule) {
     for (const baseProp in customPropObj[prop]) {
       const propName = customPropObj[prop][baseProp]
       // If current property doesn't exist alerady in rule - add new one
-      if (value[baseProp] && !rule.prop(propName)) {
-        rule.prop(propName, styleDetector({
+      if (value[baseProp] && (isFallback || !rule.prop(propName))) {
+        const appendedValue = styleDetector({
           [propName]: value[baseProp]
-        }, rule)[propName])
+        }, rule)[propName]
+
+        if (isFallback) {
+          rule.style.fallbacks[propName] = appendedValue
+        }
+        else {
+          rule.style[propName] = appendedValue
+        }
       }
       delete value[baseProp]
     }
@@ -81,16 +89,17 @@ function objectToString(value, prop, rule) {
  *
  * @param {Object} style
  * @param {Object} rule
+ * @param {Boolean} is fallback prop
  * @return {Object} convertedStyle
  */
-function styleDetector(style, rule) {
+function styleDetector(style, rule, isFallback) {
   for (const prop in style) {
     const value = style[prop]
 
     if (value.constructor === Object) {
-      if (prop === 'fallbacks') style[prop] = styleDetector(style[prop])
+      if (prop === 'fallbacks') style[prop] = styleDetector(style[prop], rule, true)
       else {
-        style[prop] = objectToString(value, prop, rule)
+        style[prop] = objectToString(value, prop, rule, isFallback)
         // Avoid creating properties with empty values
         if (!style[prop]) delete style[prop]
       }
@@ -101,7 +110,7 @@ function styleDetector(style, rule) {
     if (value.constructor === Array && value[0].constructor !== Array) {
       if (prop === 'fallbacks') {
         for (let index = 0; index < style[prop].length; index ++) {
-          style[prop][index] = styleDetector(style[prop][index])
+          style[prop][index] = styleDetector(style[prop][index], rule, true)
         }
         continue
       }

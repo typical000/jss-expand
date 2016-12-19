@@ -1,7 +1,7 @@
   {
   "name": "jss-expand",
   "description": "JSS plugin that gives you a better syntax than CSS.",
-  "version": "2.0.1",
+  "version": "2.1.1",
   "author": {
     "name": "Pavel Davydov",
     "email": "typical000@gmail.com"

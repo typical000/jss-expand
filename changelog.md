@@ -1,3 +1,7 @@
+## 2.1.1 / 2016-12-19
+
+- fallbacks support for custom properties
+
 ## 2.0.1 / 2016-12-09
 
 - update to jss 6.0

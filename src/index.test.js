@@ -47,7 +47,10 @@ describe('jss-expand', () => {
     beforeEach(() => {
       sheet = jss.createStyleSheet({
         a: {
-          transition: [['opacity', 1, 'linear'], ['transform', 300, 'ease']]
+          transition: [
+            ['opacity', 1, 'linear'],
+            ['transform', 300, 'ease']
+          ]
         }
       })
     })
@@ -102,7 +105,7 @@ describe('jss-expand', () => {
           background: {
             color: '#000',
             image: 'url(test.jpg)',
-            position: [[0, 0]],
+            position: [0, 0],
             repeat: 'no-repeat'
           }
         }
@@ -118,33 +121,6 @@ describe('jss-expand', () => {
         '.a-id {\n' +
         '  background: #000 0 0 no-repeat;\n' +
         '  background-image: url(test.jpg);\n' +
-        '}'
-      )
-    })
-  })
-
-  describe('array of arrays', () => {
-    let sheet
-
-    beforeEach(() => {
-      sheet = jss.createStyleSheet({
-        a: {
-          transition: [
-            ['opacity', '200ms'],
-            ['width', '300ms']
-          ]
-        }
-      })
-    })
-
-    it('should add rules', () => {
-      expect(sheet.getRule('a')).to.not.be(undefined)
-    })
-
-    it('should generate correct CSS', () => {
-      expect(sheet.toString()).to.be(
-        '.a-id {\n' +
-        '  transition: opacity 200ms, width 300ms;\n' +
         '}'
       )
     })
@@ -219,6 +195,42 @@ describe('jss-expand', () => {
         '  background: red;\n' +
         '  background: url(test.png) 0 0 no-repeat;\n' +
         '  background: linear-gradient(red 0%, green 100%);\n' +
+        '}'
+      )
+    })
+  })
+
+  describe('expand with fallbacks and custom properties', () => {
+    let sheet
+
+    beforeEach(() => {
+      sheet = jss.createStyleSheet({
+        a: {
+          background: {
+            image: 'linear-gradient(red 0%, green 100%)',
+            size: [10, 20]
+          },
+          fallbacks: {
+            background: {
+              image: 'url(gradient.png)',
+              size: 'auto'
+            },
+          }
+        }
+      })
+    })
+
+    it('should add rules', () => {
+      expect(sheet.getRule('a')).to.not.be(undefined)
+    })
+
+    it('should generate correct CSS', () => {
+      expect(sheet.toString()).to.be(
+        '.a-id {\n' +
+        '  background-size: auto;\n' +
+        '  background-image: url(gradient.png);\n' +
+        '  background-size: 10 20;\n' +
+        '  background-image: linear-gradient(red 0%, green 100%);\n' +
         '}'
       )
     })

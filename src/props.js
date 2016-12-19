@@ -26,7 +26,8 @@ export const propArray = {
  * For e.g.: "{position: [0, 0]}" => "background-position: 0 0;".
  */
 export const propArrayInObj = {
-  position: true // background-position
+  position: true, // background-position
+  size: true // background-size
 }
 
 /**
